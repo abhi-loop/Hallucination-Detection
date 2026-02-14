@@ -1,4 +1,6 @@
-from datasets import load_dataset
+import json
 
-dataset = load_dataset("domenicrosati/TruthfulQA")
-train_df = dataset["train"].to_pandas()
+def load_truthfulqa(path):
+    with open(path, "r") as f:
+        data = json.load(f)
+    return data
