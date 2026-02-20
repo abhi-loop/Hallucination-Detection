@@ -12,7 +12,7 @@ def generate_k_answers(model, tokenizer, prompt, k=10):
                 **inputs,
                 max_new_tokens=50,
                 do_sample=True,
-                temperature=0.9
+                temperature=0.1
             )
 
         text = tokenizer.decode(output[0], skip_special_tokens=True)
