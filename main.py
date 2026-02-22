@@ -1,3 +1,5 @@
+import os
+import csv
 import torch
 
 from models.llm_loader import load_model
@@ -7,11 +9,34 @@ from metrics.eigenscore import compute_eigenscore
 from metrics.threshold import find_best_threshold
 
 
-# Pre-defined reference scores (EigenScore, label) used to calibrate threshold.
-# label: 0 = factual/consistent, 1 = likely hallucination
-# These represent typical score ranges observed at different temperatures.
-REFERENCE_SCORES  = [-1.8, -1.5, -1.6, -1.7, -1.4, 2.0, 2.3, 2.8]
-REFERENCE_LABELS  = [0,     0,     0,     0,     0,   1,   1,   1  ]
+RESULTS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "results.csv")
+
+# Fallback placeholder data used only when results.csv does not exist yet.
+_FALLBACK_SCORES = [-1.8, -1.5, -1.6, -1.7, -1.4, 2.0, 2.3, 2.8]
+_FALLBACK_LABELS = [  0,    0,    0,    0,    0,   1,   1,   1  ]
+
+
+def load_reference_scores():
+    """Load EigenScores and labels from data/results.csv.
+    Falls back to hardcoded placeholder data if file not found."""
+    if not os.path.exists(RESULTS_PATH):
+        print("[WARNING] data/results.csv not found. Using placeholder reference scores.")
+        print("          Run: python pipeline/run_dataset.py --limit 50")
+        return _FALLBACK_SCORES, _FALLBACK_LABELS
+
+    scores, labels = [], []
+    with open(RESULTS_PATH, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            scores.append(float(row["eigenscore"]))
+            labels.append(int(row["label"]))
+
+    if len(scores) < 2:
+        print("[WARNING] results.csv has fewer than 2 rows. Using placeholder reference scores.")
+        return _FALLBACK_SCORES, _FALLBACK_LABELS
+
+    print(f"Loaded {len(scores)} reference scores from data/results.csv")
+    return scores, labels
 
 
 def main():
@@ -36,10 +61,11 @@ def main():
     score = compute_eigenscore(embeddings)
     print(f"EigenScore: {score:.4f}")
 
-    # ── Threshold Integration ──────────────────────────────────────────────────
+    # ── Threshold Calibration from real (or fallback) data ────────────────────
     print("\n" + "=" * 60)
+    reference_scores, reference_labels = load_reference_scores()
     print("Finding best threshold from reference scores...")
-    threshold, gmean = find_best_threshold(REFERENCE_SCORES, REFERENCE_LABELS)
+    threshold, gmean = find_best_threshold(reference_scores, reference_labels)
     print(f"  Best Threshold : {threshold:.4f}")
     print(f"  G-Mean         : {gmean:.4f}")
 
