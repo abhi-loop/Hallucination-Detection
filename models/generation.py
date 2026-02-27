@@ -15,7 +15,8 @@ def generate_k_answers(model, tokenizer, prompt, k=10):
                 temperature=0.2
             )
 
-        text = tokenizer.decode(output[0], skip_special_tokens=True)
+        input_len = inputs["input_ids"].shape[1]
+        text = tokenizer.decode(output[0][input_len:], skip_special_tokens=True)
         texts.append(text)
 
     return texts

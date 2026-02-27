@@ -78,8 +78,14 @@ def run(limit: int):
         # Label via majority vote (pass question so prompt echo can be stripped)
         label = majority_label(responses, correct_answers, question=question)
 
+        print(f"   Correct answers : {correct_answers}")
+        for j, resp in enumerate(responses):
+            per_label = label_response(resp, correct_answers, question=question)
+            verdict_per = "Factual" if per_label == 0 else "Hallucination"
+            print(f"   Response [{j+1}]: {resp.strip()[:120]}  →  {verdict_per}")
+
         verdict = "Factual" if label == 0 else "Hallucination"
-        print(f"   EigenScore: {eigenscore:.4f} | Label: {label} ({verdict})")
+        print(f"   EigenScore: {eigenscore:.4f} | Majority label: {label} ({verdict})")
 
         append_result(question, eigenscore, label)
 

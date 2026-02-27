@@ -21,7 +21,7 @@ def label_response(response: str, correct_answers: list[str], question: str = ""
         answer_lower = answer.lower().strip()
 
         # Strategy 1: exact substring match (either direction)
-        if answer_lower in response_lower or response_lower in answer_lower:
+        if answer_lower in response_lower or (len(response_lower) > 5 and response_lower in answer_lower):
             return 0
 
         # Strategy 3: keyword overlap
