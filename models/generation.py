@@ -12,7 +12,9 @@ def generate_k_answers(model, tokenizer, prompt, k=10):
                 **inputs,
                 max_new_tokens=50,
                 do_sample=True,
-                temperature=0.2
+                temperature=0.5,
+                top_p=0.99,
+                top_k=5
             )
 
         input_len = inputs["input_ids"].shape[1]

@@ -21,10 +21,10 @@ from models.generation import generate_k_answers
 from models.hidden_extraction import extract_sentence_embedding
 from metrics.eigenscore import compute_eigenscore
 from data.loader import load_truthfulqa
-from data.labeler import majority_label, label_response
+from data.labeler import label_question, response_is_correct
 
 RESULTS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "results.csv")
-K = 5  # number of responses to generate per question
+K = 10  # number of responses to generate per question
 
 
 def already_processed(question: str) -> bool:
@@ -76,11 +76,11 @@ def run(limit: int):
         eigenscore = compute_eigenscore(embeddings)
 
         # Label via majority vote (pass question so prompt echo can be stripped)
-        label = majority_label(responses, correct_answers, question=question)
+        label = label_question(responses, correct_answers)
 
         print(f"   Correct answers : {correct_answers}")
         for j, resp in enumerate(responses):
-            per_label = label_response(resp, correct_answers, question=question)
+            per_label = 0 if response_is_correct(resp, correct_answers) else 1
             verdict_per = "Factual" if per_label == 0 else "Hallucination"
             print(f"   Response [{j+1}]: {resp.strip()[:120]}  →  {verdict_per}")
 

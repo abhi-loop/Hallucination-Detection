@@ -1,6 +1,6 @@
 import torch
 
-def compute_eigenscore(embeddings, alpha=1e-2, eps=1e-6):
+def compute_eigenscore(embeddings, alpha=1e-3, eps=1e-6):
     """
     embeddings: list of K tensors of shape (d,)
                 OR tensor of shape (K, d)
