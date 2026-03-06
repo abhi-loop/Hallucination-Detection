@@ -19,15 +19,14 @@ const HallucinationVerdict = ({ result }: HallucinationVerdictProps) => {
     );
   }
 
-  const { isHallucinated, confidence } = result;
+  const { isHallucinated, confidence, eigenscore, threshold } = result;
 
   return (
     <div
-      className={`rounded-lg border p-4 transition-all duration-500 ${
-        isHallucinated
+      className={`rounded-lg border p-4 transition-all duration-500 ${isHallucinated
           ? 'border-destructive/40 bg-destructive/5 glow-destructive'
           : 'border-success/40 bg-success/5 glow-success'
-      }`}
+        }`}
     >
       <h3 className="text-xs font-mono font-semibold text-muted-foreground uppercase tracking-wider mb-3">
         Verdict
@@ -38,25 +37,38 @@ const HallucinationVerdict = ({ result }: HallucinationVerdictProps) => {
         ) : (
           <Shield className="w-8 h-8 text-success" />
         )}
-        <div>
+        <div className="flex-1">
           <p
-            className={`text-lg font-mono font-bold ${
-              isHallucinated ? 'text-destructive' : 'text-success'
-            }`}
+            className={`text-lg font-mono font-bold ${isHallucinated ? 'text-destructive' : 'text-success'
+              }`}
           >
-            {isHallucinated ? 'HALLUCINATED' : 'FACTUAL'}
+            {isHallucinated ? '⚠ HALLUCINATED' : '✔ FACTUAL'}
           </p>
           <p className="text-xs font-mono text-muted-foreground">
             Confidence: {(confidence * 100).toFixed(1)}%
           </p>
         </div>
+
+        {/* Real scores badge */}
+        {eigenscore !== undefined && threshold !== undefined && (
+          <div className="text-right text-[10px] font-mono text-muted-foreground space-y-0.5">
+            <p>
+              score{' '}
+              <span className="text-foreground font-bold">{eigenscore.toFixed(4)}</span>
+            </p>
+            <p>
+              threshold{' '}
+              <span className="text-foreground font-bold">{threshold.toFixed(4)}</span>
+            </p>
+          </div>
+        )}
       </div>
+
       {/* Confidence bar */}
       <div className="mt-3 h-1.5 rounded-full bg-muted overflow-hidden">
         <div
-          className={`h-full rounded-full transition-all duration-700 ${
-            isHallucinated ? 'bg-destructive' : 'bg-success'
-          }`}
+          className={`h-full rounded-full transition-all duration-700 ${isHallucinated ? 'bg-destructive' : 'bg-success'
+            }`}
           style={{ width: `${confidence * 100}%` }}
         />
       </div>

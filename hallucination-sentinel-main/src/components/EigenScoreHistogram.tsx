@@ -2,9 +2,11 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 
 interface EigenScoreHistogramProps {
   scores: number[] | null;
+  liveScore?: number;        // current question's eigenscore
+  isHallucinated?: boolean;  // used to colour the live marker
 }
 
-const EigenScoreHistogram = ({ scores }: EigenScoreHistogramProps) => {
+const EigenScoreHistogram = ({ scores, liveScore, isHallucinated }: EigenScoreHistogramProps) => {
   if (!scores) {
     return (
       <div className="rounded-lg border border-border bg-card p-4 h-full">
@@ -18,21 +20,41 @@ const EigenScoreHistogram = ({ scores }: EigenScoreHistogramProps) => {
     );
   }
 
-  // Bin the scores into histogram buckets
+  // Dynamic binning that works with any real-valued range (e.g. -2 to +3)
   const numBins = 12;
-  const bins = Array.from({ length: numBins }, (_, i) => ({
-    range: `${(i / numBins).toFixed(2)}`,
-    count: 0,
-    binStart: i / numBins,
-    binEnd: (i + 1) / numBins,
-  }));
+  const minVal = Math.min(...scores);
+  const maxVal = Math.max(...scores);
+  const range = maxVal - minVal || 1; // avoid div-by-zero
+
+  const bins = Array.from({ length: numBins }, (_, i) => {
+    const binStart = minVal + (i / numBins) * range;
+    const binEnd = minVal + ((i + 1) / numBins) * range;
+    return { range: binStart.toFixed(2), count: 0, binStart, binEnd };
+  });
 
   scores.forEach((s) => {
-    const idx = Math.min(Math.floor(s * numBins), numBins - 1);
-    bins[idx].count++;
+    const idx = Math.min(
+      Math.floor(((s - minVal) / range) * numBins),
+      numBins - 1
+    );
+    if (idx >= 0 && idx < numBins) bins[idx].count++;
   });
 
   const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
+  const meanBinIdx = Math.min(
+    Math.max(Math.floor(((mean - minVal) / range) * numBins), 0),
+    numBins - 1
+  );
+
+  // Live score marker — clamped to the reference range
+  const liveBinIdx =
+    liveScore !== undefined
+      ? Math.min(
+        Math.max(Math.floor(((liveScore - minVal) / range) * numBins), 0),
+        numBins - 1
+      )
+      : null;
+  const liveColor = isHallucinated ? 'hsl(0, 72%, 55%)' : 'hsl(145, 70%, 45%)';
 
   return (
     <div className="rounded-lg border border-border bg-card p-4 h-full">
@@ -73,7 +95,7 @@ const EigenScoreHistogram = ({ scores }: EigenScoreHistogramProps) => {
             labelFormatter={(label) => `Score: ${label}`}
           />
           <ReferenceLine
-            x={bins[Math.min(Math.floor(mean * numBins), numBins - 1)].range}
+            x={bins[meanBinIdx].range}
             stroke="hsl(175, 80%, 50%)"
             strokeDasharray="4 4"
             strokeWidth={1.5}
@@ -85,6 +107,20 @@ const EigenScoreHistogram = ({ scores }: EigenScoreHistogramProps) => {
               fontFamily: 'JetBrains Mono, monospace',
             }}
           />
+          {liveBinIdx !== null && (
+            <ReferenceLine
+              x={bins[liveBinIdx].range}
+              stroke={liveColor}
+              strokeWidth={2}
+              label={{
+                value: `live ${liveScore!.toFixed(2)}`,
+                position: 'top',
+                fill: liveColor,
+                fontSize: 10,
+                fontFamily: 'JetBrains Mono, monospace',
+              }}
+            />
+          )}
           <Bar
             dataKey="count"
             fill="hsl(215, 80%, 55%)"

@@ -1,18 +1,21 @@
 import { useState, useCallback } from 'react';
-import { Activity } from 'lucide-react';
+import { Activity, WifiOff } from 'lucide-react';
 import ChatPanel from '@/components/ChatPanel';
 import HallucinationVerdict from '@/components/HallucinationVerdict';
 import EmbeddingScatter from '@/components/EmbeddingScatter';
 import EigenScoreHistogram from '@/components/EigenScoreHistogram';
-import { generateMockAnalysis, getMockResponse } from '@/lib/mockData';
+import ResponsesPanel from '@/components/ResponsesPanel';
+import { analyzeQuestion } from '@/lib/api';
 import type { ChatMessage, AnalysisResult } from '@/lib/mockData';
 
 const Index = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
+  const [responses, setResponses] = useState<string[] | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSend = useCallback((content: string) => {
+  const handleSend = useCallback(async (content: string) => {
     const userMsg: ChatMessage = {
       id: crypto.randomUUID(),
       role: 'user',
@@ -21,23 +24,39 @@ const Index = () => {
     };
     setMessages((prev) => [...prev, userMsg]);
     setIsAnalyzing(true);
+    setError(null);
 
-    // Simulate API delay
-    setTimeout(() => {
-      const response = getMockResponse();
+    try {
+      const { result, responses: rawResponses, raw } = await analyzeQuestion(content);
+
+      // Show the first (or best) response as the assistant reply
+      const replyText =
+        rawResponses[0]?.trim() ||
+        `[EigenScore: ${raw.eigenscore.toFixed(4)} | Verdict: ${raw.verdict.toUpperCase()}]`;
+
       const assistantMsg: ChatMessage = {
         id: crypto.randomUUID(),
         role: 'assistant',
-        content: response,
+        content: replyText,
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, assistantMsg]);
-
-      // Generate analysis
-      const result = generateMockAnalysis();
       setAnalysis(result);
+      setResponses(rawResponses);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Unknown error';
+      setError(msg);
+
+      const errMsg: ChatMessage = {
+        id: crypto.randomUUID(),
+        role: 'assistant',
+        content: `⚠ Backend error: ${msg}`,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errMsg]);
+    } finally {
       setIsAnalyzing(false);
-    }, 1500);
+    }
   }, []);
 
   return (
@@ -49,9 +68,21 @@ const Index = () => {
           HALLUCINATION DETECTOR
         </h1>
         <span className="text-[10px] font-mono text-muted-foreground ml-auto">
-          v0.1.0 — frontend only
+          v1.0.0 — live backend
         </span>
       </header>
+
+      {/* Backend error banner */}
+      {error && (
+        <div className="flex items-center gap-2 px-4 py-2 bg-destructive/10 border-b border-destructive/20 text-destructive text-xs font-mono">
+          <WifiOff className="w-3 h-3 shrink-0" />
+          <span>
+            {error.includes('fetch') || error.includes('network')
+              ? 'Cannot reach backend. Make sure the FastAPI server is running on port 8000.'
+              : error}
+          </span>
+        </div>
+      )}
 
       {/* Main layout */}
       <div className="flex-1 flex min-h-0">
@@ -68,16 +99,38 @@ const Index = () => {
           {/* Charts grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <EmbeddingScatter result={analysis} />
-            <EigenScoreHistogram scores={analysis?.eigenScores ?? null} />
+            <EigenScoreHistogram
+              scores={analysis?.eigenScores ?? null}
+              liveScore={analysis?.eigenscore}
+              isHallucinated={analysis?.isHallucinated}
+            />
           </div>
 
           {/* Stats row */}
           {analysis && (
             <div className="grid grid-cols-3 gap-3">
               {[
-                { label: 'Embedding Dim', value: '768' },
-                { label: 'Layers Analyzed', value: '12' },
-                { label: 'Projection', value: analysis.method },
+                {
+                  label: 'EigenScore',
+                  value:
+                    analysis.eigenscore !== undefined
+                      ? analysis.eigenscore.toFixed(4)
+                      : 'N/A',
+                },
+                {
+                  label: 'Threshold',
+                  value:
+                    analysis.threshold !== undefined
+                      ? analysis.threshold.toFixed(4)
+                      : 'N/A',
+                },
+                {
+                  label: 'G-Mean',
+                  value:
+                    analysis.gMean !== undefined
+                      ? (analysis.gMean * 100).toFixed(1) + '%'
+                      : analysis.method,
+                },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -93,6 +146,9 @@ const Index = () => {
               ))}
             </div>
           )}
+
+          {/* K Responses panel */}
+          <ResponsesPanel responses={responses} />
         </div>
       </div>
     </div>
