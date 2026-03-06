@@ -21,7 +21,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 from models.llm_loader import load_model
-from models.generation import generate_k_answers
+from models.generation import generate_k_answers, generate_canonical_answer
 from models.hidden_extraction import extract_sentence_embedding
 from metrics.eigenscore import compute_eigenscore
 from metrics.threshold import find_best_threshold
@@ -108,10 +108,11 @@ class AnalyzeResponse(BaseModel):
     eigenscore: float
     threshold: float
     g_mean: float
-    verdict: str          # "factual" | "hallucination"
-    confidence: float     # 0-1, absolute distance from threshold mapped to [0,1]
-    responses: list[str]  # all K generated answers
-    eigen_scores_ref: list[float]   # reference scores from results.csv (for histogram)
+    verdict: str              # "factual" | "hallucination"
+    confidence: float         # 0-1, absolute distance from threshold mapped to [0,1]
+    canonical_response: str   # single greedy (do_sample=False) answer shown in chat
+    responses: list[str]      # all K sampled answers (used for EigenScore)
+    eigen_scores_ref: list[float]     # reference scores from results.csv (for histogram)
     embeddings_2d: list[Embedding2D]  # 2-D scatter data
 
 
@@ -166,7 +167,10 @@ def analyze(req: AnalyzeRequest):
     tokenizer = _state["tokenizer"]
     model = _state["model"]
 
-    # 1. Generate K responses
+    # 1a. Generate one greedy (deterministic) response for display in chat
+    canonical_response = generate_canonical_answer(model, tokenizer, req.question)
+
+    # 1b. Generate K sampled responses for EigenScore computation
     responses = generate_k_answers(model, tokenizer, req.question, k=req.k)
 
     # 2. Extract embeddings
@@ -199,6 +203,7 @@ def analyze(req: AnalyzeRequest):
         g_mean=round(float(g_mean), 6),
         verdict=verdict,
         confidence=round(confidence, 4),
+        canonical_response=canonical_response,
         responses=responses,
         eigen_scores_ref=ref_scores,
         embeddings_2d=embeddings_2d,

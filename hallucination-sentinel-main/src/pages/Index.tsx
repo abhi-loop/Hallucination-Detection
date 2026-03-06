@@ -59,6 +59,13 @@ const Index = () => {
     }
   }, []);
 
+  const handleClear = useCallback(() => {
+    setMessages([]);
+    setAnalysis(null);
+    setResponses(null);
+    setError(null);
+  }, []);
+
   return (
     <div className="h-screen flex flex-col bg-background">
       {/* Top bar */}
@@ -88,7 +95,7 @@ const Index = () => {
       <div className="flex-1 flex min-h-0">
         {/* Chat panel - left */}
         <div className="w-[380px] border-r border-border shrink-0">
-          <ChatPanel messages={messages} onSend={handleSend} isAnalyzing={isAnalyzing} />
+          <ChatPanel messages={messages} onSend={handleSend} onClear={handleClear} isAnalyzing={isAnalyzing} />
         </div>
 
         {/* Metrics panel - right */}

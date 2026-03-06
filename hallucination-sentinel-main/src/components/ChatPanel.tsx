@@ -1,14 +1,15 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send } from 'lucide-react';
+import { Send, Trash2 } from 'lucide-react';
 import type { ChatMessage } from '@/lib/mockData';
 
 interface ChatPanelProps {
   messages: ChatMessage[];
   onSend: (message: string) => void;
+  onClear: () => void;
   isAnalyzing: boolean;
 }
 
-const ChatPanel = ({ messages, onSend, isAnalyzing }: ChatPanelProps) => {
+const ChatPanel = ({ messages, onSend, onClear, isAnalyzing }: ChatPanelProps) => {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -31,6 +32,16 @@ const ChatPanel = ({ messages, onSend, isAnalyzing }: ChatPanelProps) => {
         <h2 className="text-sm font-mono font-semibold text-foreground tracking-wide uppercase">
           Chat
         </h2>
+        {messages.length > 0 && (
+          <button
+            onClick={onClear}
+            disabled={isAnalyzing}
+            title="Clear chat"
+            className="ml-auto text-muted-foreground hover:text-destructive transition-colors disabled:opacity-30"
+          >
+            <Trash2 className="w-4 h-4" />
+          </button>
+        )}
       </div>
 
       {/* Messages */}
@@ -48,11 +59,10 @@ const ChatPanel = ({ messages, onSend, isAnalyzing }: ChatPanelProps) => {
             className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-[85%] rounded-lg px-3 py-2 text-sm ${
-                msg.role === 'user'
+              className={`max-w-[85%] rounded-lg px-3 py-2 text-sm ${msg.role === 'user'
                   ? 'bg-primary text-primary-foreground'
                   : 'bg-secondary text-secondary-foreground'
-              }`}
+                }`}
             >
               {msg.content}
             </div>
