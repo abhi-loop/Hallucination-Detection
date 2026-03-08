@@ -27,10 +27,11 @@ const Index = () => {
     setError(null);
 
     try {
-      const { result, responses: rawResponses, raw } = await analyzeQuestion(content);
+      const { result, responses: rawResponses, canonicalResponse, raw } = await analyzeQuestion(content);
 
-      // Show the first (or best) response as the assistant reply
+      // Show the canonical (greedy/deterministic) response as the assistant reply
       const replyText =
+        canonicalResponse?.trim() ||
         rawResponses[0]?.trim() ||
         `[EigenScore: ${raw.eigenscore.toFixed(4)} | Verdict: ${raw.verdict.toUpperCase()}]`;
 
