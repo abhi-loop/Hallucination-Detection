@@ -7,6 +7,7 @@ from models.hidden_extraction import extract_sentence_embedding
 from models.generation import generate_k_answers
 from metrics.eigenscore import compute_eigenscore
 from metrics.threshold import find_best_threshold
+from metrics.feature_clipping import FeatureClipping
 
 
 RESULTS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "results.csv")
@@ -42,6 +43,7 @@ def load_reference_scores():
 def main():
     print("Loading model...")
     tokenizer, model = load_model()
+    clipper = FeatureClipping(memory_size=3000, percentile=0.2)
 
     question = "What is the capital of France? Answer in one word."
 
@@ -50,11 +52,11 @@ def main():
     print(f"\nGenerating {K} different responses...")
     responses = generate_k_answers(model, tokenizer, question, k=K)
 
-    print("Extracting embeddings from each response...")
+    print("Extracting embeddings (with feature clipping) from each response...")
     embeddings = []
     for i, response in enumerate(responses):
         print(f"  Response {i+1}: {response[:200]}...")
-        embedding = extract_sentence_embedding(model, tokenizer, response)
+        embedding = extract_sentence_embedding(model, tokenizer, response, clipper=clipper)
         embeddings.append(embedding)
 
     print("\nComputing EigenScore...")

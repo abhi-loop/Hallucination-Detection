@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useId } from 'react';
 import { Activity, WifiOff } from 'lucide-react';
 import ChatPanel from '@/components/ChatPanel';
 import HallucinationVerdict from '@/components/HallucinationVerdict';
@@ -14,6 +14,8 @@ const Index = () => {
   const [responses, setResponses] = useState<string[] | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [useClipping, setUseClipping] = useState(true);
+  const clippingToggleId = useId();
 
   const handleSend = useCallback(async (content: string) => {
     const userMsg: ChatMessage = {
@@ -27,7 +29,7 @@ const Index = () => {
     setError(null);
 
     try {
-      const { result, responses: rawResponses, canonicalResponse, raw } = await analyzeQuestion(content);
+      const { result, responses: rawResponses, canonicalResponse, raw } = await analyzeQuestion(content, 10, useClipping);
 
       // Show the canonical (greedy/deterministic) response as the assistant reply
       const replyText =
@@ -75,7 +77,36 @@ const Index = () => {
         <h1 className="text-sm font-mono font-bold text-foreground tracking-wide">
           HALLUCINATION DETECTOR
         </h1>
-        <span className="text-[10px] font-mono text-muted-foreground ml-auto">
+
+        {/* Feature Clipping toggle */}
+        <div className="ml-auto flex items-center gap-2">
+          <label
+            htmlFor={clippingToggleId}
+            className="text-[10px] font-mono text-muted-foreground select-none cursor-pointer"
+          >
+            FEAT. CLIPPING
+          </label>
+          {/* Pill toggle */}
+          <button
+            id={clippingToggleId}
+            role="switch"
+            aria-checked={useClipping}
+            onClick={() => setUseClipping((v) => !v)}
+            disabled={isAnalyzing}
+            title={useClipping ? 'Feature Clipping ON — click to disable' : 'Feature Clipping OFF — click to enable'}
+            className={`relative inline-flex h-4 w-8 shrink-0 cursor-pointer rounded-full border border-border transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-ring disabled:opacity-40 ${
+              useClipping ? 'bg-primary' : 'bg-muted'
+            }`}
+          >
+            <span
+              className={`pointer-events-none inline-block h-3 w-3 rounded-full bg-white shadow-sm transition-transform duration-200 mt-[1px] ${
+                useClipping ? 'translate-x-4' : 'translate-x-0.5'
+              }`}
+            />
+          </button>
+        </div>
+
+        <span className="text-[10px] font-mono text-muted-foreground">
           v1.0.0 — live backend
         </span>
       </header>

@@ -20,6 +20,7 @@ from models.llm_loader import load_model
 from models.generation import generate_k_answers
 from models.hidden_extraction import extract_sentence_embedding
 from metrics.eigenscore import compute_eigenscore
+from metrics.feature_clipping import FeatureClipping
 from data.loader import load_truthfulqa
 from data.labeler import label_question, response_is_correct
 
@@ -53,6 +54,10 @@ def run(limit: int):
     print("Loading model...")
     tokenizer, model = load_model()
 
+    # One FC instance for the whole run — memory bank accumulates across all questions
+    clipper = FeatureClipping(memory_size=3000, percentile=0.2)
+    print("[INFO] Feature Clipping enabled (memory_size=3000, percentile=0.2%)")
+
     print(f"Loading TruthfulQA dataset (limit={limit})...")
     records = load_truthfulqa(limit=limit)
 
@@ -71,8 +76,8 @@ def run(limit: int):
         # Generate K responses
         responses = generate_k_answers(model, tokenizer, question, k=K)
 
-        # Extract embeddings and compute EigenScore
-        embeddings = [extract_sentence_embedding(model, tokenizer, r) for r in responses]
+        # Extract embeddings (with feature clipping) and compute EigenScore
+        embeddings = [extract_sentence_embedding(model, tokenizer, r, clipper=clipper) for r in responses]
         eigenscore = compute_eigenscore(embeddings)
 
         # Label via majority vote (pass question so prompt echo can be stripped)

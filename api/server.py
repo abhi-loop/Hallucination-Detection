@@ -25,6 +25,7 @@ from models.generation import generate_k_answers, generate_canonical_answer
 from models.hidden_extraction import extract_sentence_embedding
 from metrics.eigenscore import compute_eigenscore
 from metrics.threshold import find_best_threshold
+from metrics.feature_clipping import FeatureClipping
 
 # ── Path to calibration data ──────────────────────────────────────────────────
 RESULTS_PATH = os.path.join(
@@ -69,7 +70,9 @@ async def lifespan(app: FastAPI):
     tokenizer, model = load_model()
     _state["tokenizer"] = tokenizer
     _state["model"] = model
-    print("[INFO] Model loaded. Server is ready.")
+    # One FC instance per server session — memory bank grows across queries
+    _state["clipper"] = FeatureClipping(memory_size=3000, percentile=0.2)
+    print("[INFO] Model loaded. Feature Clipping enabled. Server is ready.")
     yield
     _state.clear()
 
@@ -95,6 +98,7 @@ app.add_middleware(
 class AnalyzeRequest(BaseModel):
     question: str = Field(..., min_length=1, description="The question to analyze")
     k: int = Field(10, ge=1, le=20, description="Number of responses to generate")
+    use_clipping: bool = Field(True, description="Whether to apply Feature Clipping to embeddings")
 
 
 class Embedding2D(BaseModel):
@@ -166,6 +170,7 @@ def analyze(req: AnalyzeRequest):
 
     tokenizer = _state["tokenizer"]
     model = _state["model"]
+    clipper = _state["clipper"]
 
     # 1a. Generate one greedy (deterministic) response for display in chat
     canonical_response = generate_canonical_answer(model, tokenizer, req.question)
@@ -173,9 +178,10 @@ def analyze(req: AnalyzeRequest):
     # 1b. Generate K sampled responses for EigenScore computation
     responses = generate_k_answers(model, tokenizer, req.question, k=req.k)
 
-    # 2. Extract embeddings
+    # 2. Extract embeddings (optionally with feature clipping)
+    active_clipper = clipper if req.use_clipping else None
     embeddings = [
-        extract_sentence_embedding(model, tokenizer, r)
+        extract_sentence_embedding(model, tokenizer, r, clipper=active_clipper)
         for r in responses
     ]
 

@@ -30,8 +30,6 @@ def generate_k_answers(model, tokenizer, prompt, k=10):
                 temperature=0.5,
                 top_p=0.99,
                 top_k=5
-                # repetition_penalty=1.1,
-                # pad_token_id=tokenizer.eos_token_id,
             )
 
         input_len = inputs["input_ids"].shape[1]
