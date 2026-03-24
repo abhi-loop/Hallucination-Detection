@@ -29,6 +29,7 @@ hallucination-detection/
 │   └── generation.py              # Response generation with sampling
 ├── metrics/
 │   ├── eigenscore.py              # EigenScore computation
+│   ├── feature_clipping.py        # Feature Clipping (FC) — test-time embedding normalisation
 │   ├── evaluation.py              # Evaluation utilities
 │   └── threshold.py               # Optimal threshold via ROC curve
 ├── pipeline/
@@ -135,6 +136,7 @@ Type any question in the chat panel and hit Send. After ~30–60 seconds:
 - **EigenScore Histogram** — reference distribution with live score marked
 - **Embedding Scatter** — PCA of the 10 live response embeddings (PC1 vs PC2)
 - **Generated Responses** — expandable list of all K=10 raw model answers
+- **FEAT. CLIPPING toggle** (header bar) — enable/disable Feature Clipping on embeddings in real time (defaults to ON)
 
 ---
 
