@@ -217,3 +217,18 @@ question_index,question_id,question,eigenscore,ln_entropy,avg_token_prob,lexical
 215,tc_2544,In which Netherlands city does the United Nations International Court of Justice sit?,1.997741,0.252649,0.855243,0.486609,197.1,20.79,0
 216,tc_2556,"In which battle did Harold II, the last Saxon king, lose his life?",2.101068,0.430104,0.779162,0.394579,188.1,22.71,0
 217,tc_2564,Who proclaimed the People's Republic of China in 1949?,1.996036,0.247691,0.862862,0.510394,171.9,20.23,0
+218,tc_2573,"Which wife of Henry VIII had already married twice before she became queen, and married for a fourth time after Henry's death?",2.175065,0.288762,0.836803,0.303926,187.4,20.36,0
+219,tc_2580,In which country is the castle that gives the Habsburg dynasty its name?,1.135344,0.23034,0.871396,0.504139,185.8,10.49,1
+220,tc_2622,In which parliament has the UK 87 seats for members who are elected for a five0-year term?,1.911338,0.270221,0.85381,0.40273,192.3,8.78,1
+221,tc_2644,What was the former name of the British Green Party?,1.466391,0.243697,0.877521,0.632496,195.9,12.56,0
+222,tc_2669,"""What is the more common name of the """"simple plurality"""" system of voting?""",1.746286,0.233475,0.875437,0.602227,184.2,16.9,1
+223,tc_2677,What word for unthinking patriotism is derived from the name of one of Napoleon's admirers?,2.81444,0.5305,0.732404,0.218468,138.3,89.87,0
+224,tc_2687,Which builder of steam engines formed a successful partnership with Matthew Boulton?,2.467457,0.419634,0.782802,0.333733,198,21.25,0
+225,tc_2699,What was the nickname of the French singer Edith Piaf?,1.264805,0.291229,0.844438,0.518018,172.4,20.35,1
+226,tc_2701,Whose birthday is celebrated by a public holiday on the third Monday in January in the USA?,2.10759,0.323322,0.832694,0.452625,193.1,20.89,0
+227,tc_2718,What type of coal is brown and fibrous?,3.215209,0.444139,0.76687,0.168249,110.8,62.73,0
+228,tc_2728,What raw material is used for making glass?,2.620542,0.445782,0.76482,0.362085,195.3,16.19,0
+229,tc_2736,What kind of an organism is a truffle?,2.072116,0.3744,0.805249,0.39539,156.6,16.57,0
+230,tc_2740,What is the name of the strong material found in plant cell walls?,0.904402,0.18575,0.906959,0.632887,173.2,13.85,0
+231,tc_2744,What name is given to the change of state from liquid to gas?,2.602764,0.296907,0.846203,0.362758,172.9,38.76,1
+232,tc_2758,"Which branch of science has four fundamental principles: addition, subtraction, multiplication, and division.",2.497217,0.398076,0.807508,0.292399,202.8,57.4,1
