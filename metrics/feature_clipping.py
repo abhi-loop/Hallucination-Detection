@@ -8,7 +8,7 @@ IMPORTANT FIX:
 The memory bank stores RAW hidden activations, not clipped ones.
 This prevents threshold drift caused by repeatedly clipping already-clipped data.
 
-This file is intentionally NOT integrated with the rest of the project yet.
+
 """
 
 import torch

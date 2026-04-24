@@ -56,9 +56,12 @@ from sentence_transformers import SentenceTransformer, util
 # Load on CPU — labeling is not latency-critical; keeps GPU free for the LLM
 _semantic_model = SentenceTransformer("nli-roberta-large", device="cpu")
 
-# Paper thresholds
-ROUGE_L_THRESHOLD = 0.5
-SEMANTIC_SIM_THRESHOLD = 0.9
+# Thresholds
+# ROUGE-L: lowered to 0.2 because GT aliases are short phrases and verbose LLM
+#          responses are punished on recall even when the answer is present.
+# Semantic: lowered to 0.70 — paraphrases of short facts sit in the 0.70-0.80 range.
+ROUGE_L_THRESHOLD      = 0.2
+SEMANTIC_SIM_THRESHOLD = 0.70
 
 
 def _normalize(text: str) -> str:
@@ -72,31 +75,41 @@ def _normalize(text: str) -> str:
 
 def response_is_correct(response: str, correct_answers: list[str]) -> bool:
     """
-    Check whether ONE response is factually correct
-    using paper-defined correctness measures.
+    Check whether ONE response is factually correct.
+
+    Three strategies (cheapest first):
+      1. Verbatim substring  — GT alias appears anywhere in the response.
+         Catches cases like: GT="david seville", response="...by David Seville, who..."
+      2. ROUGE-L F1          — threshold lowered to 0.2 to handle verbose responses.
+      3. Semantic similarity — threshold lowered to 0.70 for short-fact paraphrases.
     """
 
     response = _normalize(response)
     if len(response) == 0:
         return False
 
-    # -------- ROUGE-L --------
+    # -------- Strategy 1: Verbatim substring match --------
+    for gt in correct_answers:
+        gt_norm = _normalize(gt)
+        if gt_norm and gt_norm in response:
+            return True
+
+    # -------- Strategy 2: ROUGE-L --------
     rouge = rouge_scorer.RougeScorer(["rougeL"], use_stemmer=True)
 
     for gt in correct_answers:
-        gt = _normalize(gt)
-
-        rouge_score = rouge.score(gt, response)["rougeL"].fmeasure
-        if rouge_score >= ROUGE_L_THRESHOLD:
+        gt_norm = _normalize(gt)
+        score = rouge.score(gt_norm, response)["rougeL"].fmeasure
+        if score >= ROUGE_L_THRESHOLD:
             return True
 
-    # -------- Semantic similarity --------
+    # -------- Strategy 3: Semantic similarity --------
     with torch.no_grad():
         resp_emb = _semantic_model.encode(response, convert_to_tensor=True)
 
         for gt in correct_answers:
-            gt = _normalize(gt)
-            gt_emb = _semantic_model.encode(gt, convert_to_tensor=True)
+            gt_norm = _normalize(gt)
+            gt_emb  = _semantic_model.encode(gt_norm, convert_to_tensor=True)
 
             sim = util.cos_sim(resp_emb, gt_emb).item()
             if sim >= SEMANTIC_SIM_THRESHOLD:

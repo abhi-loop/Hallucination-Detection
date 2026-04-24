@@ -1,0 +1,96 @@
+# =============================================================================
+# Hallucination Detection — Complete Requirements
+# =============================================================================
+#
+# ── HARDWARE ─────────────────────────────────────────────────────────────────
+#
+#   GPU   : NVIDIA GPU with CUDA support (required for 4-bit quantised OPT-6.7B)
+#           Minimum VRAM : 5 GB   (model loads with CPU offload for overflow)
+#           Recommended  : 8 GB+
+#
+#   CPU   : Any modern x86-64 processor
+#           Minimum RAM  : 24 GB  (20 GB allocated to CPU offload + OS overhead)
+#           Recommended  : 32 GB+
+#
+#   Disk  : ~15 GB free
+#             ~13 GB  — OPT-6.7B model weights (downloaded & cached by HuggingFace)
+#             ~500 MB — nli-roberta-large (SentenceTransformer)
+#             ~200 MB — TruthfulQA dataset
+#
+# ── OPERATING SYSTEM ─────────────────────────────────────────────────────────
+#
+#   Windows 10/11 (64-bit)  — tested; needs WSL2 or bitsandbytes-windows (see below)
+#   Ubuntu 22.04+           — recommended for full bitsandbytes CUDA support
+#   macOS                   — NOT supported (bitsandbytes requires NVIDIA CUDA)
+#
+# ── CUDA / GPU DRIVER ────────────────────────────────────────────────────────
+#
+#   CUDA Toolkit : 11.8 or 12.1+   (match the torch wheel you install)
+#   NVIDIA Driver: >= 520 (for CUDA 11.8)  /  >= 525 (for CUDA 12.x)
+#   cuDNN        : included in PyTorch wheel — no separate install needed
+#
+# ── LANGUAGES & RUNTIMES ─────────────────────────────────────────────────────
+#
+#   Python  : 3.10 – 3.12   (3.10 recommended; 3.8/3.9 may work but untested)
+#   Node.js : 18+            (for the React/Vite frontend)
+#   npm     : 9+  (comes with Node.js 18)   OR   bun >= 1.0
+#
+# =============================================================================
+# PYTHON PACKAGES  (pip install -r requirements.txt)
+# =============================================================================
+
+# ── Core ML / LLM stack ──────────────────────────────────────────────────────
+torch>=2.2.0                    # PyTorch — install the CUDA wheel (see NOTE 1)
+transformers>=4.40.0            # HuggingFace Transformers (OPT-6.7B model + tokenizer)
+accelerate>=0.29.0              # device_map="auto" + CPU RAM offload
+bitsandbytes>=0.43.0            # 4-bit NF4 quantisation (BitsAndBytesConfig)
+
+# ── Embedding / Semantic similarity ──────────────────────────────────────────
+sentence-transformers>=2.7.0    # SentenceTransformer("nli-roberta-large") in labeler.py
+
+# ── Dataset ──────────────────────────────────────────────────────────────────
+datasets>=2.19.0                # HuggingFace Datasets — TruthfulQA loader
+
+# ── Metrics / Evaluation ─────────────────────────────────────────────────────
+rouge-score>=0.1.2              # ROUGE-L scoring in data/labeler.py
+scikit-learn>=1.4.0             # PCA (server.py), ROC curve / G-mean (threshold.py)
+numpy>=1.26.0                   # Array ops throughout
+
+# ── API Server ───────────────────────────────────────────────────────────────
+fastapi>=0.111.0                # REST API framework (POST /analyze, GET /health)
+uvicorn[standard]>=0.29.0       # ASGI server — start with: uvicorn api.server:app --port 8000
+pydantic>=2.7.0                 # Request / response schema validation
+
+# =============================================================================
+# NOTES
+# =============================================================================
+#
+# NOTE 1 — PyTorch CUDA wheel (replace plain `torch` above with one of these):
+#
+#   CUDA 11.8:  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+#   CUDA 12.1:  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+#   CUDA 12.4:  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+#
+#   Match the CUDA version to your installed driver (check with: nvidia-smi).
+#
+# NOTE 2 — bitsandbytes on Windows:
+#
+#   The official package only has full CUDA support on Linux.
+#   On Windows, use the community fork:
+#       pip install bitsandbytes-windows
+#   Or run inside WSL2 (Ubuntu) for native support.
+#
+# NOTE 3 — Frontend (hallucination-sentinel-main/):
+#
+#   Install:  cd hallucination-sentinel-main && npm install
+#   Run:      npm run dev          (serves on http://localhost:8080)
+#
+#   Key frontend dependencies (managed by npm, not pip):
+#     react 18, react-dom, react-router-dom, recharts, tailwindcss,
+#     @tanstack/react-query, vite 5, typescript 5, shadcn-ui (radix-ui)
+#
+# NOTE 4 — First-run model download (~13 GB):
+#
+#   The OPT-6.7B weights are downloaded automatically from HuggingFace on
+#   first run and cached in ~/.cache/huggingface/hub.
+#   If you need a HuggingFace token:  set HF_TOKEN=<your_token>

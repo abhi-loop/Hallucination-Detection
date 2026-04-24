@@ -1,0 +1,219 @@
+question_index,question_id,question,eigenscore,ln_entropy,avg_token_prob,lexical_similarity,length_mean,length_std,label
+0,tc_2,Who was the man behind The Chipmunks?,2.870691,0.729607,0.665384,0.216142,165.1,60.02,0
+1,tc_33,Which Lloyd Webber musical premiered in the US on 10th December 1993?,2.329386,0.237114,0.882296,0.409624,182.8,14.27,1
+2,tc_40,Who was the next British Prime Minister after Arthur Balfour?,2.315989,0.300883,0.836214,0.395681,175.9,45.13,1
+3,tc_49,Who had a 70s No 1 hit with Kiss You All Over?,2.262049,0.393878,0.794884,0.407934,161.8,27.86,1
+4,tc_56,What claimed the life of singer Kathleen Ferrier?,2.525802,0.723346,0.63509,0.250439,205.4,39.31,0
+5,tc_69,Rita Coolidge sang the title song for which Bond film?,2.333985,0.471875,0.749493,0.292089,176.3,15.2,0
+6,tc_79,What was the last US state to reintroduce alcohol after prohibition?,2.589837,0.55835,0.68474,0.212095,126.1,82.9,0
+7,tc_106,Which actress was voted Miss Greenwich Village in 1942?,2.46424,0.442161,0.767455,0.272058,180.1,24.5,1
+8,tc_133,What is the Japanese share index called?,1.772879,0.227818,0.873117,0.583744,173.3,13.25,0
+9,tc_137,What was the name of Michael Jackson's autobiography written in 1988?,2.507607,0.464672,0.765688,0.299576,187.9,28.02,0
+10,tc_149,In which decade did stereo records first go on sale?,2.162818,0.3933,0.782975,0.364415,180.5,18.5,1
+11,tc_165,In what year's Olympics were electric timing devices and a public-address system used for the first time?,2.385234,0.583312,0.729036,0.298539,179.5,58.49,1
+12,tc_217,Which volcano in Tanzania is the highest mountain in Africa?,2.110363,0.353998,0.817459,0.429763,181.8,21.43,0
+13,tc_219,The flag of Libya is a plain rectangle of which color?,0.33469,0.161718,0.915703,0.667437,182,11.21,0
+14,tc_241,Of which African country is Niamey the capital?,1.946782,0.224492,0.86874,0.486296,169.7,19.11,0
+15,tc_245,Who was the director of the CIA from 1976-81?,0.698804,0.174059,0.911917,0.58322,155.1,31.04,1
+16,tc_261,Which musical featured the song The Street Where You Live?,2.524277,0.382558,0.797252,0.36207,179.4,22.94,1
+17,tc_267,"""Who was the target of the failed """"Bomb Plot"""" of 1944?""",2.718403,0.473741,0.754396,0.326916,207.7,24.91,0
+18,tc_276,Who had an 80s No 1 hit with Hold On To The Nights?,2.317499,0.389777,0.807723,0.384567,148.8,40.45,1
+19,tc_280,Who directed the classic 30s western Stagecoach?,1.788807,0.336318,0.826544,0.330221,127.5,81.87,0
+20,tc_282,Dave Gilmore and Roger Waters were in which rock group?,2.464609,0.348138,0.808637,0.362429,172.8,15.75,0
+21,tc_288,Which highway was Revisited in a classic 60s album by Bob Dylan?,-1.606905,0.258871,0.86575,0.412341,103.2,88.8,0
+22,tc_298,Which was the only eastern bloc country to participate in the 1984 LA Olympics?,1.099794,0.201751,0.897498,0.616147,197.1,11.45,0
+23,tc_304,Which 90s sci fi series with James Belushi was based on Bruce Wagner's comic strip of the same name?,-0.413737,0.276199,0.861956,0.406059,148,67.78,1
+24,tc_316,If I Were A Rich Man Was a big hit from which stage show?,2.817599,0.626112,0.667044,0.276377,109.9,71.58,1
+25,tc_349,Men Against the Sea and Pitcairn's Island were two sequels to what famous novel?,2.556793,0.396422,0.797177,0.316945,175.8,52.24,0
+26,tc_379,What was Truman Capote's last name before he was adopted by his stepfather?,0.489676,0.405167,0.777171,0.244828,97,76.65,0
+27,tc_397,"In Lewis Carroll's poem The Hunting of the Snark, what did the elusive, troublesome snark turn into to fool hunters?",1.560751,0.194526,0.902831,0.402822,120.9,54.21,0
+28,tc_453,"In the Bible, who did the sun and moon stand still before?",1.457881,0.317112,0.831849,0.481844,175.1,17.84,1
+29,tc_455,What Michelle Pfeiffer movie got a boost from the Coolio song Gangsta's Paradise?,2.889987,0.512441,0.730725,0.204306,178,61.37,0
+30,tc_510,What was President Gerald Ford's middle name?,1.973229,0.317974,0.831157,0.473804,175.5,11.0,1
+31,tc_515,Art Garfunkel trained for which profession although he didn't qualify?,2.692198,0.512311,0.723775,0.228285,154.3,60.62,1
+32,tc_517,Who was the last inmate of Spandau jail in Berlin?,2.493342,0.667874,0.644224,0.274983,177.2,51.37,1
+33,tc_518,What was Eddie Murphy's first movie?,2.299114,0.372003,0.817478,0.34215,165,45.41,1
+34,tc_538,In the 80s who wrote the novel Empire of The Sun?,2.206179,0.322408,0.826182,0.383844,169.7,21.13,1
+35,tc_540,Kagoshima international airport is in which country?,1.333202,0.20315,0.88524,0.536928,165.9,14.69,0
+36,tc_543,In which sport could the Pacers take on the Pistons?,2.818604,0.588979,0.701435,0.243877,156.5,81.76,0
+37,tc_559,Kim Carnes' nine weeks at No 1 with Bette Davis Eyes was interrupted for one week by which song?,2.267358,0.4773,0.751309,0.320183,171.6,14.97,1
+38,tc_561,Where in Canada is the Lion's Gate bridge?,2.248009,0.413518,0.773294,0.428836,198,38.12,0
+39,tc_564,What was Walter Matthau's first movie?,0.67071,0.374602,0.80605,0.46258,130.4,63.24,1
+40,tc_585,Otis Barton was a pioneer in exploring where?,2.387341,0.45843,0.754095,0.340864,186.6,29.19,1
+41,tc_586,Where in England was actor Nigel Hawthorne born?,2.270114,0.439879,0.765507,0.361336,178.7,14.99,0
+42,tc_596,"What mythological beast has the head of a man, the body of a lion, and the tail and feet of a dragon?",2.151649,0.315649,0.831172,0.263389,123.3,70.71,0
+43,tc_604,"In Greek mythology, who were Arges, Brontes and Steropes?",2.450259,0.461044,0.750391,0.33723,189.5,15.47,1
+44,tc_626,Which musician founded the Red Hot Peppers?,2.335817,0.422928,0.778009,0.332685,168.2,11.52,1
+45,tc_635,Where did the Shinning Path terrorists operate?,2.305201,0.418587,0.770687,0.39509,205.6,20.47,1
+46,tc_653,How old was Jimi Hendrix when he died?,2.079175,0.318587,0.838351,0.388301,144.3,20.81,0
+47,tc_657,Which Brit broke the land speed record in 1990 in Thrust 2?,2.148236,0.25831,0.857832,0.402896,189.5,14.21,1
+48,tc_664,In which state was Gene Vincent born?,2.221307,0.356089,0.820041,0.431232,173.8,24.11,1
+49,tc_665,How was the European Recovery Program in the 1940s more commonly known?,2.434629,0.453184,0.771512,0.306697,170.7,79.83,0
+50,tc_672,Brandon Lee died during the making of which movie?,-0.264827,0.373419,0.787137,0.496348,49.4,68.34,0
+51,tc_678,Who had a 70s No 1 hit with Let's Do It Again?,2.002468,0.23797,0.870783,0.494077,148.1,11.86,1
+52,tc_687,Who had a Too Legit To Quit Tour?,2.140136,0.492725,0.732672,0.309035,63.3,66.1,0
+53,tc_690,"""According to Rudyard Kipling what were the """"two imposters"""" to meet and treat the same day?""",2.500116,0.431471,0.7681,0.348224,176,22.46,1
+54,tc_691,Who is the most successful UK solo artist in the USA?,1.89725,0.306724,0.851279,0.551258,152.8,51.64,1
+55,tc_704,Which country does the airline TAAG come from?,1.973729,0.327822,0.825751,0.453226,172.7,22.51,1
+56,tc_715,Which US No 1 single came from Diana Ross's platinum album Diana?,2.495645,0.588108,0.697715,0.261523,200,20.17,1
+57,tc_719,River Phoenix died during the making of which movie?,2.56084,0.499855,0.735085,0.300247,162.6,55.42,1
+58,tc_723,Which artist David was born in Bradford UK?,1.598387,0.365586,0.815685,0.320754,182.8,21.76,1
+59,tc_725,What is Mel Gibson's middle name?,3.536089,0.791258,0.621373,0.15426,64.1,52.84,0
+60,tc_731,Richard Daley was mayor of which city for 21 years?,2.485187,0.369948,0.796805,0.333393,186.4,22.34,0
+61,tc_759,"""In which movie did Garbo say, """"I want to be alone"""".""",0.873187,0.187735,0.903198,0.538023,143.9,8.72,1
+62,tc_783,What is Osbert Lancaster best known for producing?,2.720556,0.525284,0.731113,0.249269,207.4,22.5,1
+63,tc_812,Who was the defending champion when Martina Navratilova first won Wimbledon singles?,2.136544,0.311986,0.836383,0.367828,182.4,14.88,1
+64,tc_827,Who was the first US-born winner of golf's British Open?,2.245633,0.524492,0.71685,0.275083,196.3,17.64,1
+65,tc_841,In which country is the Sky Train Rail bridge?,2.029762,0.23669,0.866076,0.54434,197.1,25.08,0
+66,tc_847,What was the Paramount Film Company originally called?,2.339623,0.423242,0.780361,0.395865,231.6,29.36,1
+67,tc_866,Who was the first person after Scott to reach the South Pole overland?,1.780154,0.323489,0.820781,0.462443,183.8,10.27,1
+68,tc_875,Which journalist first told the world about the My Lai massacre?,2.169019,0.273498,0.851394,0.393899,185,12.88,0
+69,tc_881,What is the name of Terence and Shirley Conran's dress designer son?,2.489389,0.464697,0.758704,0.29278,195.5,16.97,1
+70,tc_886,Which drink did The Spice Girls promote?,2.858202,0.473089,0.76224,0.239127,178.5,43.19,0
+71,tc_888,Who was the youngest brother in the Beach Boys?,1.659579,0.28237,0.851649,0.527313,170.4,11.42,0
+72,tc_905,Who first hosted Family Feud?,2.226092,0.335398,0.811626,0.346203,179.4,16.22,0
+73,tc_935,What did the Lone Ranger's title Kemo Sabe mean in Apache?,2.294189,0.410039,0.789466,0.376922,148.1,38.91,1
+74,tc_938,Who or what was Gentle Ben in the 60s TV series?,2.727716,0.558379,0.715444,0.261146,201.2,13.35,1
+75,tc_945,Which 70s show was based on the British show Till Death Us Do Part?,2.06539,0.540035,0.754003,0.326002,102.6,81.98,1
+76,tc_954,On what date in 1969 did Neil Armstrong first set foot on the Moon?,0.884922,0.204935,0.886576,0.637485,189.7,12.29,0
+77,tc_955,Bandar Seri Begawan International airport is in which country?,1.359589,0.17641,0.914971,0.5753,176.9,14.43,0
+78,tc_962,What was the profession of Paul Strand (1890 - 1976)?,1.959368,0.268875,0.856587,0.441297,176.7,21.26,0
+79,tc_1004,Who had a 60s No 1 with Downtown?,2.250049,0.453498,0.766065,0.336383,160.2,17.08,1
+80,tc_1007,"Who was born first, Kiefer Sutherland or Christian Slater?",2.588624,0.414826,0.778806,0.251829,155.7,55.91,0
+81,tc_1008,"To the nearest two, how many tennis Grand Slam titles did Jimmy Connors win?",2.181562,0.273069,0.867007,0.306362,171.2,59.66,0
+82,tc_1009,Who was the Georgia Peach?,2.81761,0.553113,0.698892,0.257021,210.3,19.87,0
+83,tc_1020,Who set fire to his guitar at the Monterey Pop festival in 19676?,2.316784,0.333586,0.817313,0.304742,166,18.9,0
+84,tc_1023,Della Street was whose secretary?,2.378233,0.419829,0.781517,0.41564,205.9,24.92,1
+85,tc_1028,"In music, who was Sweet and Innocent and Too Young?",1.316708,0.307417,0.851604,0.433936,165.8,16.57,1
+86,tc_1029,Who is featured on Puff Daddy's Can't Hold Me Down?,2.407125,0.462071,0.758518,0.2755,166.4,22.24,1
+87,tc_1068,What had Edmond Hillary worked at before taking up mountain climbing?,0.571955,0.457944,0.778866,0.226761,109.1,65.42,0
+88,tc_1069,In which American state is the Isabella Stewart Gardner Museum?,1.953751,0.289738,0.85536,0.48523,206.2,14.6,0
+89,tc_1070,Benina international airport is in which country?,1.697289,0.235361,0.871721,0.477441,203,25.02,1
+90,tc_1098,Beloved in 1999 was whose first movie since The Color Purple in 1985?,2.372185,0.395508,0.808644,0.284696,166.5,55.99,0
+91,tc_1114,Which Star Trek star directed Three Men and a Baby?,1.736986,0.294117,0.846813,0.467211,178.3,7.53,0
+92,tc_1115,Which sitcom star appeared on the big screening The Object of My Affection?,2.23481,0.390834,0.800111,0.338979,171.3,25.86,1
+93,tc_1120,"""Which character did Julia """"Roberts play in Steven Spielberg's Hook?""",2.331525,0.36639,0.804844,0.371009,187.3,16.5,1
+94,tc_1123,Which US president did Anthony Hopkins play in a film whose title was simply his name?,2.578292,0.534335,0.768566,0.267903,159,77.38,0
+95,tc_1124,Which movie was a biopic about the life of David Helfgott?,2.494721,0.366463,0.815708,0.360332,135.7,60.14,1
+96,tc_1128,Which film director guested as the FBI Director in The Silence of the Lambs?,2.731568,0.478118,0.785574,0.233012,179.5,57.25,1
+97,tc_1131,In which sci fi classic did the space ship Nostromo first appear?,1.776984,0.607032,0.720343,0.244198,122.9,80.57,0
+98,tc_1152,Nigel Hawthorne was Oscar nominated for The Madness of which King?,2.598011,0.424238,0.78416,0.303315,140.4,68.96,0
+99,tc_1156,Which Swedish actress won the Best Supporting Actress Oscar for Murder on the Orient Express?,1.856619,0.285132,0.851263,0.392022,199,20.04,1
+100,tc_1176,Which Oscar-nominated film had You Sexy Thing as its theme song?,2.30101,0.456286,0.77109,0.316387,144.7,43.17,1
+101,tc_1179,Which Joan's career revived in Whatever Happened to Baby Jane?,2.935379,0.622169,0.668671,0.187699,184.5,59.81,0
+102,tc_1181,Which much-loved actor won the Best Actor Oscar for The Philadelphia Story?,2.29651,0.347771,0.822029,0.329705,204.3,20.84,0
+103,tc_1183,Which legendary dancer was Oscar-nominated for The Towering Inferno?,0.201621,0.382395,0.816871,0.446129,168.8,55.49,0
+104,tc_1189,What was the name of the brothel in The Best Little Whorehouse in Texas?,0.045552,0.182426,0.907573,0.576595,161,50.18,1
+105,tc_1210,Who was the male star of the movie The Man of La Mancha?,2.329316,0.375931,0.809742,0.356434,178.1,11.32,1
+106,tc_1243,What relation is Joey Richardson to Vanessa Redgrave?,2.144199,0.379876,0.795206,0.350454,182.3,15.99,0
+107,tc_1250,Melanie Molitor is the mom of which tennis world NO 1?,2.481816,0.444372,0.773439,0.384599,197.3,12.02,1
+108,tc_1254,Marc Dutroux hit the headlines over a 'house of horrors' in which country?,2.228289,0.34677,0.816891,0.389432,189.4,12.39,0
+109,tc_1284,On which date in 1945 did Hitler take cyanide then shoot himself?,2.658943,0.508742,0.754937,0.274518,172.2,33.05,0
+110,tc_1313,In which river is the Boulder Dam?,2.033892,0.356945,0.827825,0.468954,175.8,18.19,0
+111,tc_1321,"Which sports event was first held at Worcester, Massachusetts in 1927?",2.531783,0.594912,0.687498,0.292721,231.9,12.14,1
+112,tc_1323,In which European city is the Belvederen Gallery?,1.796591,0.293679,0.841267,0.502097,194.6,14.32,0
+113,tc_1324,How old was Woody Herman when he founded his own orchestra?,2.062214,0.379787,0.796729,0.35856,178.6,11.07,1
+114,tc_1328,For which movie did Katharine Hepburn win her second Oscar?,2.473288,0.343785,0.812134,0.30857,176.3,34.66,1
+115,tc_1331,Who had a 60s No 1 hit with This Diamond Ring?,2.22607,0.32764,0.823334,0.389782,159.9,26.08,1
+116,tc_1333,The world was first aware of the Chernobyl disaster after detectors were triggered at a nuclear plant in which country?,1.584764,0.337832,0.826376,0.403744,212.6,30.36,1
+117,tc_1340,In which country was the first permanent bungee jumping site situated?,1.821931,0.292808,0.846629,0.505834,208.3,34.22,0
+118,tc_1341,Who succeeded Brezhnev as Soviet premier?,2.103215,0.206511,0.888293,0.436055,164.1,16.88,0
+119,tc_1348,In the late 60s Owen Finlay MacLaren pioneered what useful item for parents of small chldren?,2.446452,0.376042,0.803157,0.263578,178.8,23.15,1
+120,tc_1365,In which city's shipyard was Solidarity set up?,2.020921,0.317657,0.824796,0.436992,161.8,19.1,0
+121,tc_1387,Which female singer was born on exactly the same day as impressionist Rich Little?,2.042701,0.3077,0.837526,0.43594,185.2,12.76,1
+122,tc_1421,What is Harrison Ford's real name?,2.314108,0.437465,0.767127,0.329919,144.2,76.47,0
+123,tc_1442,Who's home runs record did Mark McGwire break in the 1998 season?,2.259651,0.449405,0.757685,0.217776,115.2,83.62,0
+124,tc_1456,Who won baseball's first World Series of the 80s?,2.280484,0.444011,0.781431,0.360902,189.6,12.46,1
+125,tc_1468,What was Pete Sampras seeded when he won his first US Open?,2.541018,0.621704,0.684813,0.222348,142.1,65.08,0
+126,tc_1484,"""Which boxer famously said,"""" If I can't beat this bum take my name off the record books?""""""",2.034945,0.356734,0.818271,0.30588,168.7,15.98,1
+127,tc_1485,Where did Jonathan Edwards set his 1995 triple jump world record?,2.496439,0.500686,0.737563,0.263908,191.8,16.61,0
+128,tc_1516,"In baseball, where do the Orioles come from?",2.798623,0.553032,0.700113,0.243388,144.4,64.26,0
+129,tc_1535,The Naismith Award is presented in which sport?,2.181622,0.36485,0.816132,0.335655,182.2,15.53,0
+130,tc_1537,Which cartoon and film character is the nickname of super athlete Michael Johnson?,2.10341,0.32998,0.841484,0.458856,196.6,15.25,1
+131,tc_1542,For which team did Babe Ruth blast his last Major League home run?,2.22738,0.383413,0.802158,0.370391,185.5,14.24,1
+132,tc_1602,What was Warren Beatty's first movie?,2.832642,0.379518,0.805222,0.195372,110.5,67.45,1
+133,tc_1606,"Which future Hollywood star got her break as Wonder Girl, Wonder Woman's sister Drusilla?",2.091556,0.411923,0.802427,0.286702,187.8,21.37,1
+134,tc_1609,Mickey Braddock in the 50s series Circus Boy found fame with which surname in which pop band?,-1.897324,0.143657,0.921636,0.727178,207.5,11.13,1
+135,tc_1620,Which war veteran was Director of News & Special Events for ABC before find fame as a TV cop?,3.044352,0.512703,0.73502,0.181915,153.8,74.33,0
+136,tc_1622,What US sitcom was the first exported to Britain?,2.184521,0.34731,0.822307,0.404733,180.4,12.64,1
+137,tc_1623,In Hanna and Barbera's TV cartoons base on The Addams Family who was the voice of Gomez?,1.999519,0.306875,0.835514,0.461883,185.9,11.73,0
+138,tc_1635,Who was the only female victim to be killed off in the opening credit sequence in Police Squad?,2.824327,0.503105,0.760442,0.22233,161.9,66.17,0
+139,tc_1686,Which US president won the Nobel Peace Prize in 1920?,1.905699,0.323208,0.829736,0.430614,200,20.3,0
+140,tc_1693,Who beat Tim Henman in his first Wimbledon singles semifinal?,1.878477,0.251225,0.85804,0.425417,181.7,15.49,1
+141,tc_1699,What relation was Flo Jo to Jackie Joyner Kersee?,2.526057,0.564117,0.722957,0.243668,166.5,41.88,0
+142,tc_1700,How long was swimmer Michelle Smith-de Bruin banned for attempting to manipulate a drugs test?,1.362378,0.298705,0.835287,0.416773,187,7.18,1
+143,tc_1702,Yuan Yuan was caught carrying drugs for which Chinese team?,3.208044,0.488596,0.74939,0.214448,135.5,72.38,1
+144,tc_1704,Which grand slam did Pete Sampras not win in the 20th century?,1.354311,0.222177,0.873562,0.522623,174.3,10.41,0
+145,tc_1730,In which events did Gert Fredriksson win six Olympic gold medals?,2.373091,0.34384,0.823131,0.385757,203.6,19.47,1
+146,tc_1735,"How many of his 45 races did Mike Hawthorn, a former Formula One motor racing world champion, win?",-0.22869,0.162023,0.919525,0.602696,180.7,13.43,0
+147,tc_1754,On the Internet what is Spam?,2.162499,0.497576,0.746844,0.333476,180,19.61,0
+148,tc_1773,In which country did the Internet start?,2.385159,0.421171,0.791482,0.340787,202.6,22.52,0
+149,tc_1798,In which year was the Juilliard School founded in New York?,2.214181,0.386298,0.795493,0.3326,178.5,24.17,1
+150,tc_1816,"Who wrote My Life and Loves in 1926, originally banned in the US?",2.621524,0.547319,0.719183,0.234312,172.1,51.94,1
+151,tc_1826,What was Blondie's last UK No 1 of the 80s?,1.627829,0.256485,0.856739,0.586183,137.3,15.8,1
+152,tc_1858,"In baseball, where do the Royals come from?",2.822209,0.526313,0.710224,0.23464,195.6,49.43,0
+153,tc_1859,What is the largest city in Ohio?,-0.657979,0.112401,0.936902,0.779671,160.4,4.45,0
+154,tc_1865,In which decade of the 20th century was Anne Bancroft born?,1.544856,0.329533,0.844059,0.455505,160.8,11.94,0
+155,tc_1867,The Suez Canal connects the Mediterranean Sea to which other Sea?,2.566493,0.300118,0.84972,0.389733,163.5,54.93,0
+156,tc_1888,Which rock star did Cindy Crawford name her first son after?,2.519233,0.440802,0.772499,0.253496,175.8,19.74,0
+157,tc_1914,Sun Yat Sen overthrew the emperor in which country establishing a republic after 2000 years of imperial rule?,2.473796,0.28766,0.856413,0.349464,178.1,30.06,0
+158,tc_1921,Who designed the dress which made the most at Diana's dress auction?,2.67164,0.487834,0.746556,0.26526,208.3,48.24,1
+159,tc_1924,Which Palestinian co-founded al Fatah in 1957?,2.12738,0.364868,0.817711,0.353223,182.7,22.3,0
+160,tc_1938,In which country was Earl Spencer's acrimonious divorce settlement heard?,2.548376,0.543286,0.724711,0.310242,200.6,26.65,1
+161,tc_1943,"In which North African country was Mohammed Al-Fayed, owner of Harrods department store in London, born?",2.089599,0.337505,0.820996,0.454544,194.9,14.32,0
+162,tc_1944,Aung San Suu Kyi is a controversial leader in which country?,2.954168,0.522708,0.774309,0.257426,163.4,58.54,0
+163,tc_1945,Which of the founders of United Artists had the last name nearest the beginning of the alphabet?,1.069816,0.203017,0.892766,0.505623,207.6,16.28,0
+164,tc_1968,"In La Cage Aux Folles, what was La Cage Aux Folles?",2.648848,0.573223,0.697724,0.235677,140,70.56,0
+165,tc_1973,Where was the Fiddler in the musical's title?,2.340774,0.470042,0.74881,0.34273,181.5,25.22,1
+166,tc_1977,South Pacific was set during which war?,2.534451,0.346371,0.817706,0.351146,178.6,16.4,0
+167,tc_2020,What percentage of the earth's surface is covered by Europe?,2.560782,0.256415,0.853234,0.33653,158.3,55.72,1
+168,tc_2031,Which European town gave its name to a Treaty which symbolizes closer economic links between European countries?,2.120645,0.400521,0.793843,0.28763,172.5,54.37,0
+169,tc_2032,Which home of champagne in France was also where the German High Command surrendered in WWII?,2.444145,0.392858,0.794121,0.332172,168.8,25.72,1
+170,tc_2063,Which was the first European city this century to open an underground railway system?,1.659529,0.277722,0.85188,0.475959,190.8,18.68,0
+171,tc_2090,Who first drew Mickey Mouse when ?Disney first supplied the voice?,2.090382,0.398116,0.779658,0.427974,198.9,19.81,1
+172,tc_2097,Which actress wrote the novel The Last of the Really Great Whangdoodles?,2.693025,0.485566,0.746468,0.230734,168.9,33.4,1
+173,tc_2111,Who was the star of the film based on the record Harper Valley PTA by Jeannie C Riley?,2.137641,0.411911,0.777647,0.41605,159.9,36.77,1
+174,tc_2114,What color golf balls are used on the golf course in Antarctica?,1.953448,0.626212,0.673963,0.235013,96.7,74.68,1
+175,tc_2116,Throughout the 80s and 90s Phil Collins recorded on which record label?,2.170721,0.366264,0.809142,0.361932,186.1,16.09,0
+176,tc_2128,On which label did Chuck Berry record in the 1950s and 1960s?,2.368887,0.55896,0.704319,0.266751,195.5,8.66,0
+177,tc_2145,What was the name of Michael Jackson's second wife?,2.240038,0.292902,0.841811,0.363131,180.8,13.31,0
+178,tc_2167,Which US city was named after a British Prime Minister?,1.92498,0.298762,0.831793,0.424472,182.3,12.84,0
+179,tc_2182,"""Who said, To err is human but it feels divine?""""""",2.472517,0.49011,0.747028,0.217001,167.8,23.18,0
+180,tc_2191,Which singer had a big 60s No 1 with Roses Are Red?,0.853735,0.344596,0.816383,0.474828,170.7,18.71,1
+181,tc_2202,What are the international registration letters of a vehicle from Iceland?,2.715426,0.533252,0.719531,0.314149,201.7,64.24,0
+182,tc_2208,Where was the American venue of the Live Aid concert?,2.213321,0.381972,0.794227,0.39113,203.2,22.04,0
+183,tc_2218,Which was the longest moon landing?,2.290701,0.480442,0.743627,0.327864,198.1,21.85,1
+184,tc_2222,Who had the most expensive presidential inauguration ceremony of the 20th century?,2.593257,0.482411,0.75805,0.264412,198.1,48.1,0
+185,tc_2229,Who became Israel's head of state in 1993?,2.177209,0.330575,0.814897,0.333912,162.9,23.04,1
+186,tc_2236,"In WWII, who was the head of the Nazi party's security service?",2.78826,0.44621,0.772266,0.283771,144.1,61.55,1
+187,tc_2244,Which President of the Philippines was deposed in 1986?,-0.260658,0.233916,0.875892,0.494741,201.9,14.0,0
+188,tc_2250,"What kind of disaster claimed some 100,000 lives in Armenia in 1988?",2.478132,0.452717,0.772159,0.325303,203.7,21.84,0
+189,tc_2252,Which state on the Gulf of Mexico is nearest the end of the alphabet?,2.280481,0.412158,0.789195,0.388435,173.4,22.26,1
+190,tc_2256,Truax Field international airport is in which US state?,2.396744,0.373991,0.793058,0.3553,191.7,26.61,0
+191,tc_2257,In what month was the attack on Pearl Harbor?,1.707623,0.239102,0.883834,0.484965,171.5,14.33,0
+192,tc_2265,Who did Dr. Crippen murder?,2.145419,0.396784,0.795487,0.324838,141.8,13.71,0
+193,tc_2270,"In the 1904 Olympics, how many of the 23 track and field titles were won by Americans?",1.35364,0.353109,0.814545,0.400949,195.8,19.47,1
+194,tc_2280,The Black Hills lie between which two rivers?,2.022557,0.299983,0.84543,0.505639,201.3,14.61,1
+195,tc_2287,In what year was the first in-flight movie shown on an internal flight in the USA.,2.050657,0.359091,0.808772,0.471787,190.8,13.4,1
+196,tc_2295,In which city was John Lennon murdered?,1.78709,0.314919,0.823785,0.429542,173.6,12.46,0
+197,tc_2299,How was President Kennedy assassinated?,2.069985,0.29973,0.831196,0.40162,171.8,20.88,0
+198,tc_2300,Which caped crusader operated in Gotham City?,2.413903,0.549949,0.71543,0.29409,155.8,51.58,0
+199,tc_2306,Who did Jack Ruby shoot in November 1963?,2.230962,0.496237,0.737651,0.303828,196,21.71,0
+200,tc_2317,Who was the first American to travel faster than the speed of sound?,2.307834,0.241709,0.860501,0.350924,183.5,13.54,1
+201,tc_2331,Who was the first US president Barbara Walters interviewed?,2.269635,0.279037,0.844871,0.361106,191.4,19.63,1
+202,tc_2350,Which orchestral conductor was married to one of the subjects of the film Hillary and Jackie?,2.332107,0.428988,0.780766,0.326561,182.1,12.39,1
+203,tc_2359,Which writer and politician became Lord Tweedsmuir?,2.609612,0.420859,0.78799,0.26967,180.2,30.03,0
+204,tc_2380,In what year was the first Tarzan novel published?,1.627127,0.310203,0.837754,0.477804,183.2,13.16,1
+205,tc_2400,In which country were motorized ambulances first used?,2.202195,0.386578,0.797187,0.387923,205.6,20.7,1
+206,tc_2417,What is the Pacific terminus of the Trans Siberian Railway?,2.088319,0.281864,0.849104,0.516272,201,22.35,0
+207,tc_2454,What is the name of the mountain pass which lies between Pakistan and Afghanistan?,-0.488558,0.132077,0.92433,0.735946,198.3,16.27,0
+208,tc_2457,"What is the name of the group of 1,196 islands in the North Indian Ocean, none bigger than five square miles?",-2.194551,0.088841,0.948732,0.851306,180.2,5.9,0
+209,tc_2481,Which Syrian city is said to be the oldest continually inhabited city in the world?,1.693439,0.299152,0.842163,0.399193,198.7,14.91,0
+210,tc_2496,Who was king of France at the time of the French Revolution?,1.491629,0.216199,0.877391,0.539961,172.4,14.03,0
+211,tc_2499,What is the principal language of Bulgaria?,1.788736,0.242213,0.887456,0.610718,178.7,28.64,0
+212,tc_2505,"What is the name of the cathedral in Red Square, Moscow?",1.206718,0.16527,0.908537,0.691345,185.8,11.23,0
+213,tc_2506,Which country is known to its people as Suomen Tasavalta?,1.236065,0.17366,0.905538,0.528309,158.1,9.11,0
+214,tc_2524,Which crusade was led by Philip II Augustus of France and Richard I of England?,2.055486,0.523793,0.74212,0.439512,226.8,16.4,0
+215,tc_2544,In which Netherlands city does the United Nations International Court of Justice sit?,1.997741,0.252649,0.855243,0.486609,197.1,20.79,0
+216,tc_2556,"In which battle did Harold II, the last Saxon king, lose his life?",2.101068,0.430104,0.779162,0.394579,188.1,22.71,0
+217,tc_2564,Who proclaimed the People's Republic of China in 1949?,1.996036,0.247691,0.862862,0.510394,171.9,20.23,0

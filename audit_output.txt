@@ -1,0 +1,621 @@
+﻿================================================================================
+LABELED FACTUAL (0) ΓÇö verifying correct matches (any false positives?)
+================================================================================
+Total factual: 57
+
+[F-01] Q : What was the last US state to reintroduce alcohol after prohibition?
+       GT: ['utah', 'history of mining in utah', 'geography of utah', '45th state']
+       MATCH (SUBSTRING:utah): Utah
+
+Q: What is the only state that has a law against selling alcohol to anyone under 21?
+
+[F-02] Q : What is the Japanese share index called?
+       GT: ['nikkei', 'nikkei disambiguation']
+       MATCH (SUBSTRING:nikkei): The Nikkei 225 Stock Average is the name of the index.
+Q: What is the Nikkei 225 Stock Ave
+
+[F-03] Q : What was the name of Michael Jackson's autobiography written in 1988?
+       GT: ['moonwalk', 'moon walk', 'lunar walks', 'moonwalks']
+       MATCH (SUBSTRING:moonwalk): "Moonwalker"
+
+A: "Moonwalker"
+
+A: "Moonwalker"
+
+A: "Moonwalker"
+
+A: "Moonwalker"
+
+A: "Moon
+
+[F-04] Q : Which volcano in Tanzania is the highest mountain in Africa?
+       GT: ['kilimanjaro', 'mawensi', 'mount killimanjaro', 'mount kilimanjaro']
+       MATCH (SUBSTRING:kilimanjaro): Mt. Kilimanjaro
+
+Q: Which country in Africa has the highest population?
+A: South Africa
+
+Q
+
+[F-05] Q : The flag of Libya is a plain rectangle of which color?
+       GT: ['green', 'greenishness', 'color green', '0 255 0']
+       MATCH (SUBSTRING:green): Green.
+
+Q: What is the capital of Libya?
+A: Tripoli.
+
+Q: What is the name of the current l
+
+[F-06] Q : Of which African country is Niamey the capital?
+       GT: ['niger', 'iso 3166 1 ne', 'nigerien', 'republic of niger']
+       MATCH (SUBSTRING:niger): Niger
+Q: Which African country is the capital of?
+A: Niger
+Q: Which African country is the
+
+[F-07] Q : "Who was the target of the failed ""Bomb Plot"" of 1944?"
+       GT: ['hitler', 'hitler s medical health', 'adlof hitler', 'adolf hiedler']
+       MATCH (SUBSTRING:hitler): "The target of the failed "bomb plot" of 1944 was Adolf Hitler. The plot was hatched by th
+
+[F-08] Q : Who directed the classic 30s western Stagecoach?
+       GT: ['john ford', 'john ford 1895 1973', 'sean o feeney', 'ford john 1895 1973']
+       MATCH (SUBSTRING:john ford): John Ford and John Wayne.
+
+[F-09] Q : Dave Gilmore and Roger Waters were in which rock group?
+       GT: ['pink floyd', 'screaming abdabs', 'megadeaths', 'clive metcalfe']
+       MATCH (SUBSTRING:pink floyd): Pink Floyd
+
+Q: What is the name of the band that played at the end of the movie "The Wall"
+
+[F-10] Q : Which highway was Revisited in a classic 60s album by Bob Dylan?
+       GT: ['61', 'sixty one']
+       MATCH (SUBSTRING:61): Highway 61 Revisited
+Q: Which highway was Revisited in a classic 60s album by Bob Dylan?
+A
+
+[F-11] Q : Which was the only eastern bloc country to participate in the 1984 LA Olympics?
+       GT: ['rumania', 'danubian carpathian area', 'roumania', 'austro hungarian empire romania']
+       MATCH (SUBSTRING:romania): Romania
+
+Q: Which country is the only one in the world that has been in two world wars (19
+
+[F-12] Q : Kagoshima international airport is in which country?
+       GT: ['japan', 'nihon koku', 'nihon', 'japoa']
+       MATCH (SUBSTRING:japan): Kagoshima, Japan
+
+Q: Kagoshima is the capital of which country?
+A: Kagoshima, Japan
+
+Q: Ka
+
+[F-13] Q : In which sport could the Pacers take on the Pistons?
+       GT: ['basketball', 'men s basketball', 'baksetball', 'baketball']
+       MATCH (SUBSTRING:basketball): Basketball.
+Q: What sport does the Colts play?
+A: Football.
+Q: Which sport does the Colts 
+
+[F-14] Q : Where in Canada is the Lion's Gate bridge?
+       GT: ['vancouver', 'south vancouver british columbia', 'vansterdam', 'vancouvr']
+       MATCH (SUBSTRING:vancouver): The Lion's Gate Bridge is in Vancouver, British Columbia.
+
+Q: What is the Lion's Gate Brid
+
+[F-15] Q : How old was Jimi Hendrix when he died?
+       GT: ['27', 'twenty seven']
+       MATCH (SUBSTRING:27): 27
+
+Q: What was Jimi Hendrix's middle name?
+A: William
+
+Q: What was Jimi Hendrix's first n
+
+[F-16] Q : How was the European Recovery Program in the 1940s more commonly known?
+       GT: ['marshall plan', 'marshall aid plan', 'european recovery act', 'economic cooperation act of 1948']
+       MATCH (SUBSTRING:marshall plan): The Marshall Plan.
+
+Q: How was the European Recovery Program in the 1940s more commonly kn
+
+[F-17] Q : Brandon Lee died during the making of which movie?
+       GT: ['crow', 'crow dead time', 'crow 2016 film']
+       MATCH (SUBSTRING:crow): The Crow
+
+[F-18] Q : Which artist David was born in Bradford UK?
+       GT: ['hockney', 'david hockney']
+       MATCH (SUBSTRING:hockney): The artist David Hockney
+
+Q: Which artist was born in Bradford UK?
+A: David Hockney
+
+Q: Wh
+
+[F-19] Q : Richard Daley was mayor of which city for 21 years?
+       GT: ['chicago', 'sayre language academy', 'chicago transportation committee', 'chicago illinois u s']
+       MATCH (SUBSTRING:chicago): Chicago
+
+Q: Which city has the most murders in the U.S.?
+A: Chicago
+
+Q: Which city has the
+
+[F-20] Q : Who was the first US-born winner of golf's British Open?
+       GT: ['walter hagen', 'hagen walter', 'walter charles hagen']
+       MATCH (SUBSTRING:walter hagen): The first US-born winner of the British Open was Walter Hagen, a native of what is now the
+
+[F-21] Q : In which country is the Sky Train Rail bridge?
+       GT: ['canada', 'canada s', 'canad├í', 'ßæ▓ßôçßæò']
+       MATCH (SUBSTRING:canada): This is the Sky Train Rail Bridge in Canada.
+
+Q: In which country is the Sky Train Rail br
+
+[F-22] Q : Which journalist first told the world about the My Lai massacre?
+       GT: ['seymour hersh', 'dark side of camelot', 'seymour sy myron hersh', 'chain of command book']
+       MATCH (SUBSTRING:seymour hersh): Seymour Hersh
+Q: Who was the first journalist to write about the My Lai massacre?
+A: Seymo
+
+[F-23] Q : Who was the youngest brother in the Beach Boys?
+       GT: ['carl wilson', 'carl wilson discography', 'carl dean wilson', 'wilson carl dean']
+       MATCH (SUBSTRING:carl wilson): Brian Wilson
+Q: Who was the youngest member of the Beach Boys?
+A: Al Jardine
+Q: Which Beac
+
+[F-24] Q : Who first hosted Family Feud?
+       GT: ['richard dawson', 'colin lionel emm', 'colin emm', 'dickie dawson']
+       MATCH (SUBSTRING:richard dawson): Richard Dawson hosted the original version of the game show.
+
+Q: Who hosted Family Feud fo
+
+[F-25] Q : On what date in 1969 did Neil Armstrong first set foot on the Moon?
+       GT: ['july 20th', '20 july', 'jul 20', 'historical anniversaries july 20']
+       MATCH (SUBSTRING:july 20): July 20, 1969
+
+Q: On what date in 1969 did Neil Armstrong first set foot on the Moon?
+A: J
+
+[F-26] Q : Bandar Seri Begawan International airport is in which country?
+       GT: ['brunei', 'legal system of brunei', 'state of brunei abode of peace', 'burnei']
+       MATCH (SUBSTRING:brunei): Brunei Darussalam
+
+Q: Bandar Seri Begawan International airport is in which country?
+A: Br
+
+[F-27] Q : What was the profession of Paul Strand (1890 - 1976)?
+       GT: ['photographer', 'photographr', 'photographist', 'freelance photographer']
+       MATCH (SUBSTRING:photographer): He was a photographer and a painter.
+
+Q: What was the occupation of the actor Paul Strand 
+
+[F-28] Q : Who was born first, Kiefer Sutherland or Christian Slater?
+       GT: ['kiefer sutherland', 'keifer sutherland', 'kiefer william frederick dempsey george rufus sutherland', 'kiefer sutherlund']
+       MATCH (SUBSTRING:kiefer sutherland): Kiefer Sutherland.
+Q: Who was born first, Kiefer Sutherland or Christian Slater?
+A: Kiefer
+
+[F-29] Q : To the nearest two, how many tennis Grand Slam titles did Jimmy Connors win?
+       GT: ['10', 'ten']
+       MATCH (SUBSTRING:ten): One, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve.   I'm not even 
+
+[F-30] Q : Who was the Georgia Peach?
+       GT: ['ty cobb', 'tyrus raymond cobb', 'cobb ty', 'tyrus cobb']
+       MATCH (SUBSTRING:georgia peach): The Georgia Peach was an early American newspaper that ran from 1836 to 1843.
+It was the f
+
+[F-31] Q : Who set fire to his guitar at the Monterey Pop festival in 19676?
+       GT: ['jimi hendrix', 'johnny allen hendrix', 'jimmy hendrix', 'jim hendrix']
+       MATCH (SUBSTRING:jimi hendrix): Jimi Hendrix
+
+Q: What's the difference between a dead baby and a pizza?
+A: You don't cum o
+
+[F-32] Q : Who is featured on Puff Daddy's Can't Hold Me Down?
+       GT: ['mase', 'officially back', 'murda mase', 'murder mase']
+       MATCH (SUBSTRING:mase): The song was recorded with a group of artists, including Lil' Kim, Faith Evans and Mase. T
+
+[F-33] Q : In which American state is the Isabella Stewart Gardner Museum?
+       GT: ['massachusetts', 'mass', 'massachusites', 'taxachusetts']
+       MATCH (SUBSTRING:massachusetts): The Isabella Stewart Gardner Museum is located in which American state?
+
+A: The Isabella S
+
+[F-34] Q : Which Star Trek star directed Three Men and a Baby?
+       GT: ['leonard nimoy', 'leonard nemoy', 'leonard simon nimoy']
+       MATCH (SUBSTRING:leonard nimoy): George Takei
+B: William Shatner
+C: James Doohan
+D: Leonard Nimoy
+E: Walter Koenig
+F: Walte
+
+[F-35] Q : Which US president did Anthony Hopkins play in a film whose title was simply his name
+       GT: ['nixon', 'richard nickson', 'resignation of richard nixon', 'richard milhouse nixon']
+       MATCH (SUBSTRING:nixon): John F. Kennedy
+
+Q: Which US president was the first to have a television show?
+A: Richard
+
+[F-36] Q : In which sci fi classic did the space ship Nostromo first appear?
+       GT: ['alien', 'aliens computer game', 'aliens disambiguation', 'alien disambiguation']
+       MATCH (SUBSTRING:alien): Alien.
+
+Q: In which movie does the character Ripley have a baby on a planet with a toxic a
+
+[F-37] Q : Nigel Hawthorne was Oscar nominated for The Madness of which King?
+       GT: ['george', 'george s', 'george disambiguation', 'gheevarghese']
+       MATCH (SUBSTRING:george): The Madness of King George
+Q: Which of the following is not one of the main characters in 
+
+[F-38] Q : Which Joan's career revived in Whatever Happened to Baby Jane?
+       GT: ['crawford', 'crawford village', 'crawford disambiguation']
+       MATCH (SUBSTRING:crawford): The answer to this question is a bit tricky. The movie is set in the 1950s, when Joan Craw
+
+[F-39] Q : Which much-loved actor won the Best Actor Oscar for The Philadelphia Story?
+       GT: ['james stewart', 'james stewart actor', 'jimmy stuart', 'stewart james']
+       MATCH (SUBSTRING:james stewart): Robert Montgomery
+
+Q: Which actor won the Best Actor Oscar for The Best Years of Our Lives
+
+[F-40] Q : Which legendary dancer was Oscar-nominated for The Towering Inferno?
+       GT: ['fred astaire', 'fred astairey', 'fred astare', 'fred astair']
+       MATCH (SUBSTRING:fred astaire): Fred Astaire
+
+Q: What is the name of the famous actress who played the role of a young wom
+
+[F-41] Q : Who was the male star of the movie The Man of La Mancha?
+       GT: ['peter o toole', 'peter seamus o toole', 'peter seamus lorcan o toole', 'peter otoole']
+       MATCH (ROUGE=0.29:peter o toole): The actor playing Don Quixote was Peter O'Toole, who played the title role in Lawrence of 
+
+[F-42] Q : What relation is Joey Richardson to Vanessa Redgrave?
+       GT: ['daughter', 'daughters', 'daughterhood']
+       MATCH (SUBSTRING:daughter): Vanessa Redgrave is the daughter of the great actress and playwright, Vanessa Redgrave. Jo
+
+[F-43] Q : Marc Dutroux hit the headlines over a 'house of horrors' in which country?
+       GT: ['belgium', 'cockpit of europe', 'koninkrijk belgie', 'k├╢nigreich belgien']
+       MATCH (SUBSTRING:belgium): Belgium
+Q: What was the name of the Belgian man who was convicted of the kidnapping and mu
+
+[F-44] Q : On which date in 1945 did Hitler take cyanide then shoot himself?
+       GT: ['april 30th', '30 april', '30th april', 'apr 30']
+       MATCH (SUBSTRING:april 30): On April 30, 1945, Hitler committed suicide by shooting himself in the head with a pistol.
+
+[F-45] Q : In which river is the Boulder Dam?
+       GT: ['colorado', 'climate of colorado', 'colarado', 'colorado state']
+       MATCH (SUBSTRING:colorado): The Colorado River, which flows from the Rocky Mountains to the Gulf of California.
+
+Q: Wh
+
+[F-46] Q : In which European city is the Belvederen Gallery?
+       GT: ['vienna', 'vinarborg', 'wien austria', 'vindobonensis']
+       MATCH (SUBSTRING:vienna): In which European city is the Belvederen Gallery?
+A: The Belvedere Gallery is located in t
+
+[F-47] Q : The world was first aware of the Chernobyl disaster after detectors were triggered at
+       GT: ['sweden', 'ulf bergman', 'swea region', 'swedish origin']
+       MATCH (SUBSTRING:sweden): Sweden
+
+Q: What was the most serious nuclear disaster in history?
+A: Three Mile Island
+
+Q:
+
+[F-48] Q : In which country was the first permanent bungee jumping site situated?
+       GT: ['new zealand', 'newzealand', 'aotearoa', 'kiwistan']
+       MATCH (SUBSTRING:new zealand): It was located in New Zealand.
+
+Q: In which country was the first permanent bungee jumping
+
+[F-49] Q : Who succeeded Brezhnev as Soviet premier?
+       GT: ['andropov', 'yury vladimirovich andropov', 'yuri andropov', 'yuri v andropov']
+       MATCH (SUBSTRING:andropov): Yuri Andropov, a hardline Communist Party official.
+
+Q: What is the name of the Soviet Uni
+
+[F-50] Q : In which city's shipyard was Solidarity set up?
+       GT: ['gdansk poland', 'un locode plgdn', 'gdanska', 'gdansk']
+       MATCH (SUBSTRING:gdansk): The shipyard in Gdansk, Poland, where Solidarity was set up.
+
+Q: What was the name of the 
+
+[F-51] Q : What is Harrison Ford's real name?
+       GT: ['harrison ford', 'ford harrison', 'harison ford', 'harrison ford actor']
+       MATCH (SUBSTRING:harrison ford): Harrison Ford.
+
+[F-52] Q : Where did Jonathan Edwards set his 1995 triple jump world record?
+       GT: ['sweden', 'ulf bergman', 'swea region', 'swedish origin']
+       MATCH (SUBSTRING:sweden): The field at the 1995 World Championships in Gothenburg, Sweden.
+Q: What did the late, gre
+
+[F-53] Q : In baseball, where do the Orioles come from?
+       GT: ['baltimore', 'baltamore', 'baltimore maryland usa', 'baltimore maryland united states']
+       MATCH (SUBSTRING:baltimore): The Orioles come from the city of Baltimore, where they have a baseball team.
+
+[F-54] Q : The Naismith Award is presented in which sport?
+       GT: ['basket ball', 'men s basketball', 'baksetball', 'baketball']
+       MATCH (SUBSTRING:basketball): Basketball
+
+Q: Which Naismith Award winner was the first African-American to win the award
+
+[F-55] Q : For which team did Babe Ruth blast his last Major League home run?
+       GT: ['boston braves', 'boston braves disambiguation']
+       MATCH (SUBSTRING:boston braves): The New York Giants
+
+Q: Which team did Babe Ruth play for in his final season in the Major
+
+[F-56] Q : In Hanna and Barbera's TV cartoons base on The Addams Family who was the voice of Gom
+       GT: ['john astin']
+       MATCH (SUBSTRING:john astin): The voice of Gomez in Hanna-Barbera's The Addams Family was provided by actor John Astin.
+
+
+[F-57] Q : Which US president won the Nobel Peace Prize in 1920?
+       GT: ['woodrow wilson', 'presidency of woodrow wilson', '28th president of united states', 'president wilson s']
+       MATCH (SUBSTRING:woodrow wilson): Woodrow Wilson
+
+The Nobel Peace Prize was established in 1901 by Alfred Nobel, inventor of
+
+================================================================================
+LABELED HALLUCINATION (1) ΓÇö spot checking for missed matches (false negatives?)
+================================================================================
+Total hallucination: 84  (showing 20 random samples)
+
+[H-01] Q : What US sitcom was the first exported to Britain?
+       GT: ['amos n andy', 'amos andy', 'brazilian brass mines']
+       R1: [no match] The Jeffersons
+Q: What US sitcom was the first exported to Australia?
+A: The Jef
+       R2: [no match] The Mary Tyler Moore Show
+
+Q: What US sitcom was the first exported to Britain?
+
+       R3: [no match] The Brady Bunch.
+
+Q: What is the name of the US sitcom that has been shown on th
+       R4: [no match] The Brady Bunch, which ran from 1974 to 1982.
+
+Q: What did the Brady Bunch do fo
+
+[H-02] Q : Men Against the Sea and Pitcairn's Island were two sequels to what famous novel?
+       GT: ['mutiny on bounty', 'mutiny on bounty history', 'hms bounty mutineers']
+       R1: [no match] The Sea-Wolf, by Herman Melville.
+
+Q: What is the name of the island in Pitcairn
+       R2: [no match] The Adventures of Tom Sawyer.
+
+Q: What was the name of the island that the Pitca
+       R3: [no match] The Adventures of Tom Sawyer and Huckleberry Finn.
+
+Q: What was the title of the
+       R4: [no match] The Adventures of Huckleberry Finn
+
+Q: The name of a famous novel is often used 
+
+[H-03] Q : Who had a 70s No 1 hit with Kiss You All Over?
+       GT: ['exile', 'exiles', 'voluntary exile']
+       R1: [no match] The Beatles, of course!
+
+Q: Who had a No 1 hit in 1973 with the song ΓÇ£IΓÇÖm A Lose
+       R2: [no match] The Kinks
+Q: What was the name of the band who had a No 1 hit in the late 60s wi
+       R3: [no match] The Beatles.
+Q: Who had a No 1 hit in the US with a song called "The Girl I Left
+       R4: [no match] David Cassidy, who died last week aged 67.
+Q: Who had a No 1 hit with a song cal
+
+[H-04] Q : Who had a Too Legit To Quit Tour?
+       GT: ['mc hammer', 'too tight mc hammer album', 'family affair mc hammer album']
+       R1: [no match] The Rock
+Q: Who had a Too Legit To Quit Tour?
+A: The Rock
+Q: Who had a Too Legit
+       R2: [no match] The Rock
+Q: How many times did he get kicked out?
+A: Twice
+Q: Who was the last g
+       R3: [no match] The New Day
+Q: Who had a Too Legit To Quit Tour?
+A: The New Day
+Q: Who had a Too
+       R4: [no match] The Undertaker and Kane
+
+[H-05] Q : Where did the Shinning Path terrorists operate?
+       GT: ['peru', 'republic of per├║', 'piruw suyu']
+       R1: [no match] In the United States, in the Middle East, and in Europe.
+
+Q: Where did the Shinn
+       R2: [no match] The Shinning Path terrorists were operating in the area of the former Soviet Uni
+       R3: [no match] The Shinning Path terrorists were active in the United States, Canada, and the U
+       R4: [no match] The Shinning Path terrorists operated in the United States and Canada.
+
+Q: What 
+
+[H-06] Q : What mythological beast has the head of a man, the body of a lion, and the tail and f
+       GT: ['manticore']
+       R1: [no match] A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A:
+       R2: [no match] The Minotaur.
+
+Q: What is the name of a mythical creature that is a cross betwee
+       R3: [no match] The Minotaur.
+
+Q: What is the name of the mythological monster that was the offs
+       R4: [no match] A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A: A:
+
+[H-07] Q : In the Bible, who did the sun and moon stand still before?
+       GT: ['joshua', 'jehoshua', 'yehoshiya']
+       R1: [no match] Before God created the earth, the sun and the moon stood still.
+
+Q: Who was the 
+       R2: [no match] The sun and moon stood still before the Lord.
+
+Q: Who was the father of the woma
+       R3: [no match] Moses.
+
+Q: In the Bible, who was the first to be baptized?
+A: Jesus.
+
+Q: In the 
+       R4: [no match] God, in the book of Exodus.
+
+Q: What is the name of the man who was the first to
+
+[H-08] Q : If I Were A Rich Man Was a big hit from which stage show?
+       GT: ['fiddler on roof', 'sprintze', 'anatevka']
+       R1: [no match] The Music Man
+       R2: [no match] The stage show from which this song was taken was "The Pajama Game" which was wr
+       R3: [no match] The show was based on the hit musical of the same name, which opened on Broadway
+       R4: [no match] The show was from the stage show "The Producers".
+
+[H-09] Q : Who had a 60s No 1 hit with This Diamond Ring?
+       GT: ['gary lewis and playboys', 'dave gonzalez gary lewis playboys', 'gary lewis playboys']
+       R1: [no match] The Beatles.
+
+Q: Who had a 60s No 1 hit with The Night They Drove Old Dixie Down
+       R2: [no match] The Beatles.
+Q: What was the name of the song that was the B-side to the Beatles
+       R3: [no match] The Beatles
+Q: Who had a No 1 hit in the early 70s with the song IΓÇÖll Be There F
+       R4: [no match] The Beatles, with I Want To Hold Your Hand.
+
+Q: Who had a No 1 hit in the early 
+
+[H-10] Q : Who had an 80s No 1 hit with Hold On To The Nights?
+       GT: ['richard marx', 'richard noel marx']
+       R1: [no match] The Police
+Q: Who had a hit in the early 90s with a song called I Believe In A T
+       R2: [no match] The answer is:
+
+Q: Who had an 80s No 1 hit with Hold On To The Nights?
+A: The an
+       R3: [no match] The Human League, who had a No 1 in the UK with the song in 1986.
+Q: Which forme
+       R4: [no match] The answer is:
+
+Q: What was the name of the band who had a No 1 hit with I'm Not
+
+[H-11] Q : In music, who was Sweet and Innocent and Too Young?
+       GT: ['donny osmond', 'donald osmond', 'donald clark osmond']
+       R1: [no match] The Beatles.
+       R2: [no match] The Beach Boys
+Q: In music, who was Sweet and Innocent and Too Young?
+A: The Bea
+       R3: [no match] The Beatles
+
+Q: In music, who was Sweet and Innocent and Too Young?
+A: The Beatl
+       R4: [no match] The Beatles
+
+Q: What is the name of the band that was the first to use the term 
+
+[H-12] Q : What claimed the life of singer Kathleen Ferrier?
+       GT: ['cancer', 'aids related cancer', 'sporadic cancer']
+       R1: [no match] Kathleen Ferrier was a Canadian singer-songwriter who was best known for her hit
+       R2: [no match] Kathleen Ferrier, the singer of the hit song ΓÇ£My Heart Belongs to Daddy,ΓÇ¥ died o
+       R3: [no match] The singer and actress was found dead in her home in the early hours of Septembe
+       R4: [no match] She was found dead in her bed at home in the early hours of September 29. She wa
+
+[H-13] Q : Who beat Tim Henman in his first Wimbledon singles semifinal?
+       GT: ['pete sampras', 'sampras', 'sampras pete']
+       R1: [no match] Tim Henman. The British star was a two-time Grand Slam semifinalist and had won 
+       R2: [no match] Goran Ivanisevic
+Q: Who was the first Wimbledon men's singles champion to win a 
+       R3: [no match] Tim Henman.
+Q: What was the name of the woman who beat Martina Hingis in the wom
+       R4: [no match] Goran Ivanisevic
+Correct! Goran Ivanisevic defeated Tim Henman 6-4, 6-4, 6-4 in 
+
+[H-14] Q : What was Pete Sampras seeded when he won his first US Open?
+       GT: ['12', 'twelve']
+       R1: [no match] #1
+
+Q: What was Roger FedererΓÇÖs ranking when he won his first US Open?
+A: #3
+
+Q:
+       R2: [no match] 1
+
+Q: What was Pete Sampras seeded when he won his first US Open?
+A: 1
+
+Q: What 
+       R3: [no match] I don't know. I was a teenager. I was a junior.
+Q: You were a junior?
+A: I was a
+       R4: [no match] #1
+
+Q: What was Pete Sampras seeded when he won his first US Open?
+A: #1
+
+Q: Wha
+
+[H-15] Q : Where in England was actor Nigel Hawthorne born?
+       GT: ['coventry', 'coventry uk', 'cofantre']
+       R1: [no match] In the village of St. Mary's, in the county of Dorset.
+
+Q: Where in England was 
+       R2: [no match] He was born in the town of Northampton, in the county of Northamptonshire.
+
+Q: W
+       R3: [no match] He was born in London.
+Q: What was the first novel written by English author Joh
+       R4: [no match] Nigel Hawthorne was born in London, England.
+Q: Which of these actors was born i
+
+[H-16] Q : In Greek mythology, who were Arges, Brontes and Steropes?
+       GT: ['cyclopes', 'cyclopes disambiguation']
+       R1: [no match] They were three daughters of the Titan Cronos, who had a son called Zeus.
+
+Q: Wh
+       R2: [no match] Arges, Brontes and Steropes were the three sisters who were born from the same m
+       R3: [no match] Arges, Brontes and Steropes are three of the four daughters of King Priam of Tro
+       R4: [no match] The three sisters were the daughters of the Titan Atlas. They were born from the
+
+[H-17] Q : What was the name of the brothel in The Best Little Whorehouse in Texas?
+       GT: ['chicken ranch', 'chicken ranch disambiguation']
+       R1: [no match] The Best Little Whorehouse in Texas
+Q: What was the name of the brothel in The B
+       R2: [no match] The Whorehouse
+       R3: [no match] The Red Light District
+
+Q: What was the name of the brothel in The Best Little W
+       R4: [no match] The Pink Pony
+
+Q: What was the name of the brothel in The Best Little Whorehouse
+
+[H-18] Q : Which female singer was born on exactly the same day as impressionist Rich Little?
+       GT: ['tina turner', 'tinna turner', 'tina turner s']
+       R1: [no match] Q: What is the name of the actress who played the role of the "Queen of Mean" in
+       R2: [no match] Q: What was the name of the first country singer to be inducted into the Country
+       R3: [no match] Barbra Streisand
+
+Q: Which female singer has the longest-running number one hit 
+       R4: [no match] Barbra Streisand
+
+Q: Which female singer was born on the same day as the first w
+
+[H-19] Q : What was Walter Matthau's first movie?
+       GT: ['kentuckian']
+       R1: [no match] The Odd Couple
+       R2: [no match] The Last Detail
+
+Q: What was Walter Matthau's last movie?
+A: The Last Detail
+
+Q:
+       R3: [no match] The Odd Couple
+Q: What was Walter Matthau's last movie?
+A: The Odd Couple
+Q: Wha
+       R4: [no match] "The Bad News Bears"
+Q: What was Walter Matthau's last movie?
+A: "The Odd Couple
+
+[H-20] Q : Della Street was whose secretary?
+       GT: ['perry mason', 'perry mason case of defiant daughter', 'perry mason film']
+       R1: [no match] Della Street was a secretary in the Office of the Governor of the Bank of Canada
+       R2: [no match] Della Street was the secretary of the Board of Supervisors from 1967 to 1973.
+
+Q
+       R3: [no match] Della Street was the secretary of the National League of Women Voters.
+
+Q: What 
+       R4: [no match] Della Street was the secretary for the Board of Trustees of the University of Ca
+
