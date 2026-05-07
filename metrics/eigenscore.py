@@ -14,16 +14,19 @@ def compute_eigenscore(embeddings, alpha=1e-3, eps=1e-6):
 
     # embeddings: (K, d)
     device = embeddings.device
+    K = embeddings.shape[0]
 
     # Center across samples
     Z = embeddings - embeddings.mean(dim=0, keepdim=True)
 
-    # Compute covariance in K×K space
-    Sigma = Z @ Z.T   # (K, K)
+    # Cast to float32 — hidden states from fp16 models (OPT, LLaMA) can cause
+    # eigendecomposition instability if left in fp16
+    Z = Z.float()
 
-    K = Sigma.shape[0]
+    # Compute covariance in K×K space, normalized by K (matches paper Eq. 4-6)
+    Sigma = (Z @ Z.T) / K   # (K, K)
 
-    # Regularization (same device!) - increased for stability
+    # Regularization (same device!) - prevents rank-deficiency / log(0)
     Sigma = Sigma + alpha * torch.eye(K, device=device)
 
     # Eigenvalues (symmetric matrix → use eigvalsh)

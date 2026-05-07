@@ -160,7 +160,7 @@ def run(limit: int | None):
 
         # ── 1. Generate K responses + log-probs + hidden-state embeddings ──
         # Embeddings are captured during generation (middle hidden layer,
-        # mean-pooled across generated tokens) — NOT re-encoded from text.
+        # last-token pooling) — NOT re-encoded from text.
         responses, embeddings, gen_config = generate_k_answers_with_logprobs(
             model, tokenizer, question, k=K, clipper=clipper
         )

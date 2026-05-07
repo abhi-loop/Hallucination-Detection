@@ -21,8 +21,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 from models.llm_loader import load_model
-from models.generation import generate_k_answers, generate_canonical_answer
-from models.hidden_extraction import extract_sentence_embedding
+from models.generation import generate_k_answers_with_logprobs, generate_canonical_answer
 from metrics.eigenscore import compute_eigenscore
 from metrics.threshold import find_best_threshold
 from metrics.feature_clipping import FeatureClipping
@@ -30,7 +29,7 @@ from metrics.feature_clipping import FeatureClipping
 # ── Path to calibration data ──────────────────────────────────────────────────
 RESULTS_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "data", "results.csv"
+    "data", "tqaresults.csv"
 )
 
 # ── Fallback calibration data used when results.csv is missing / too small ────
@@ -175,15 +174,14 @@ def analyze(req: AnalyzeRequest):
     # 1a. Generate one greedy (deterministic) response for display in chat
     canonical_response = generate_canonical_answer(model, tokenizer, req.question)
 
-    # 1b. Generate K sampled responses for EigenScore computation
-    responses = generate_k_answers(model, tokenizer, req.question, k=req.k)
-
-    # 2. Extract embeddings (optionally with feature clipping)
+    # 1b. Generate K sampled responses + embeddings from the generation pass
     active_clipper = clipper if req.use_clipping else None
-    embeddings = [
-        extract_sentence_embedding(model, tokenizer, r, clipper=active_clipper)
-        for r in responses
-    ]
+    responses, embeddings, _ = generate_k_answers_with_logprobs(
+        model, tokenizer, req.question, k=req.k, clipper=active_clipper
+    )
+
+    # Extract text strings for serialization
+    response_texts = [r["text"] for r in responses]
 
     # 3. Compute EigenScore for the live question
     eigenscore = compute_eigenscore(embeddings)
@@ -210,7 +208,7 @@ def analyze(req: AnalyzeRequest):
         verdict=verdict,
         confidence=round(confidence, 4),
         canonical_response=canonical_response,
-        responses=responses,
+        responses=response_texts,
         eigen_scores_ref=ref_scores,
         embeddings_2d=embeddings_2d,
     )

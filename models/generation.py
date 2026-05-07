@@ -20,7 +20,7 @@ _EMPTY_FALLBACK = (
 
 # Default generation hyperparameters (stored in raw_data.jsonl)
 DEFAULT_GEN_CONFIG = {
-    "temperature": 0.5,
+    "temperature": 0.6,
     "top_p": 0.99,
     "top_k": 5,
     "max_new_tokens": 50,
@@ -129,8 +129,8 @@ def generate_k_answers_with_logprobs(
                 if step[mid].shape[1] > 0
             ]
             if step_vecs:
-                # Mean-pool across generated token steps → (d,)
-                embedding = torch.stack(step_vecs).mean(dim=0)
+                # Last-token pooling: use only the final generated token's hidden state
+                embedding = step_vecs[-1]                    # (d,)
             else:
                 embedding = out.hidden_states[0][mid][0, -1, :]
         else:
