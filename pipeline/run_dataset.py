@@ -1,9 +1,9 @@
 """
 pipeline/run_dataset.py
 
-TriviaQA Hallucination Detection Pipeline
+TruthfulQA Hallucination Detection Pipeline
 ==========================================
-Runs the full pipeline over the TriviaQA (rc.nocontext) dataset.
+Runs the full pipeline over the TruthfulQA (generation) dataset.
 
 For each question:
   1. Generates K = 10 diverse responses + per-token log-probs
@@ -11,15 +11,15 @@ For each question:
                length_mean, length_std
   3. Labels (0 = factual, 1 = hallucination) via ROUGE-L + semantic similarity
   4. Saves incrementally to:
-       data/tqaraw_data.jsonl  — one JSON line per question (question + responses + logprobs)
-       data/tqaresults.csv     — one row per question (all metrics)
+       data/tfulraw_data.jsonl  — one JSON line per question (question + responses + logprobs)
+       data/tfulresults.csv     — one row per question (all metrics)
 
-Resume: already-processed question_ids are read from tqaraw_data.jsonl at startup.
+Resume: already-processed question_ids are read from tfulraw_data.jsonl at startup.
         Questions already in the file are skipped without re-generating.
 
 Usage:
     python pipeline/run_dataset.py --limit 50
-    python pipeline/run_dataset.py           # process entire TriviaQA validation set
+    python pipeline/run_dataset.py           # process entire TruthfulQA validation set (817 questions)
 """
 
 import os
@@ -39,14 +39,14 @@ from metrics.feature_clipping import FeatureClipping
 from metrics.ln_entropy import compute_ln_entropy
 from metrics.avg_token_prob import compute_avg_token_prob
 from metrics.lexical_similarity import compute_lexical_similarity
-from data.loader import load_tqa
+from data.loader import load_truthfulqa
 from data.labeler import label_question, response_is_correct
 
 # ── Output paths ──────────────────────────────────────────────────────────────
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR    = os.path.join(_ROOT, "data")
-JSONL_PATH  = os.path.join(DATA_DIR, "tqaraw_data.jsonl")
-CSV_PATH    = os.path.join(DATA_DIR, "tqaresults.csv")
+JSONL_PATH  = os.path.join(DATA_DIR, "tfulraw_data.jsonl")
+CSV_PATH    = os.path.join(DATA_DIR, "tfulresults.csv")
 
 K = 10  # responses per question
 
@@ -139,9 +139,9 @@ def run(limit: int | None):
     print("[INFO] Feature Clipping enabled (memory_size=3000, percentile=0.2%)")
 
     # ── Load NQ ───────────────────────────────────────────────────────────
-    print(f"Loading TriviaQA (limit={limit})...")
-    records = load_tqa(limit=limit)
-    print(f"Loaded {len(records)} TriviaQA questions.\n")
+    print(f"Loading TruthfulQA (limit={limit})...")
+    records = load_truthfulqa(limit=limit)
+    print(f"Loaded {len(records)} TruthfulQA questions.\n")
 
     # ── Process each question ─────────────────────────────────────────────
     global_index = 0  # tracks absolute position in the NQ slice

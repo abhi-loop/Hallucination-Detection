@@ -29,7 +29,7 @@ from metrics.feature_clipping import FeatureClipping
 # ── Path to calibration data ──────────────────────────────────────────────────
 RESULTS_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "data", "tqaresults.csv"
+    "data", "tfulresults.csv"
 )
 
 # ── Fallback calibration data used when results.csv is missing / too small ────
@@ -81,12 +81,7 @@ app = FastAPI(title="Hallucination Sentinel API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:8080",
-        "http://127.0.0.1:8080",
-    ],
+    allow_origins=["*"],   # allows ngrok / Colab tunnel URLs in addition to localhost
     allow_methods=["POST", "GET", "OPTIONS"],
     allow_headers=["*"],
 )

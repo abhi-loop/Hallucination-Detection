@@ -1,11 +1,10 @@
 """
 data/loader.py
 
-Loads the TriviaQA dataset from HuggingFace (open-domain, no context).
-Only questions with at least one non-empty answer alias are kept.
+Loads datasets from HuggingFace for hallucination detection experiments.
 
-Uses streaming=True so only the records actually needed are downloaded —
-no full-corpus download required even for small --limit runs.
+load_tqa        — TriviaQA (rc.nocontext)
+load_truthfulqa — TruthfulQA (generation config)
 """
 
 from datasets import load_dataset
@@ -16,8 +15,8 @@ def load_tqa(split="validation", limit=None):
     Load TriviaQA (rc.nocontext) from HuggingFace using streaming mode.
     Returns a list of dicts:
         {
-            "question_id": str,
-            "question":    str,
+            "question_id":    str,
+            "question":       str,
             "correct_answers": [str, ...]   # normalized answer aliases
         }
 
@@ -67,5 +66,53 @@ def load_tqa(split="validation", limit=None):
 
         if limit and len(records) >= limit:
             break   # stops the HuggingFace stream immediately
+
+    return records
+
+
+def load_truthfulqa(split="validation", limit=None):
+    """
+    Load TruthfulQA (generation config) from HuggingFace.
+    Returns a list of dicts:
+        {
+            "question_id":    str,   # derived from row index (no native ID field)
+            "question":       str,
+            "correct_answers": [str, ...]
+        }
+
+    TruthfulQA has 817 questions in the validation split, all adversarially
+    designed to elicit confident-but-wrong answers from LLMs.
+
+    Args:
+        split: HuggingFace split — only "validation" exists for TruthfulQA.
+        limit: if set, return at most this many questions.
+    """
+    dataset = load_dataset(
+        "truthful_qa",
+        "generation",
+        split=split,
+        trust_remote_code=True,
+    )
+
+    records = []
+    for i, row in enumerate(dataset):
+        # Merge best_answer + correct_answers, deduplicated
+        best    = row.get("best_answer", "").strip()
+        correct = [a.strip() for a in row.get("correct_answers", []) if a.strip()]
+        correct_answers = list(dict.fromkeys([a for a in ([best] + correct) if a]))
+
+        if not correct_answers:
+            continue
+
+        records.append(
+            {
+                "question_id":    f"tqa_{i}",
+                "question":       row["question"].strip(),
+                "correct_answers": correct_answers,
+            }
+        )
+
+        if limit and len(records) >= limit:
+            break
 
     return records

@@ -1,0 +1,10 @@
+question_index,question_id,question,eigenscore,ln_entropy,avg_token_prob,lexical_similarity,length_mean,length_std,label
+0,tc_2,Who was the man behind The Chipmunks?,3.466006,0.776967,0.590399,0.268788,212.4,19.17,0
+1,tc_33,Which Lloyd Webber musical premiered in the US on 10th December 1993?,2.044711,0.294651,0.842746,0.413771,186.8,10.44,1
+2,tc_40,Who was the next British Prime Minister after Arthur Balfour?,3.190037,0.483876,0.758356,0.335005,192.6,69.99,1
+3,tc_49,Who had a 70s No 1 hit with Kiss You All Over?,2.847233,0.509805,0.75128,0.295926,148.6,34.87,1
+4,tc_56,What claimed the life of singer Kathleen Ferrier?,3.012236,0.657604,0.658533,0.232452,210,29.74,1
+5,tc_69,Rita Coolidge sang the title song for which Bond film?,3.114887,0.605398,0.705931,0.194408,164.1,48.6,0
+6,tc_79,What was the last US state to reintroduce alcohol after prohibition?,3.017096,0.640653,0.673554,0.251852,159.4,62.72,0
+7,tc_106,Which actress was voted Miss Greenwich Village in 1942?,3.183875,0.600724,0.69478,0.253039,188.1,17.46,1
+8,tc_133,What is the Japanese share index called?,2.722905,0.361308,0.821888,0.416886,149.9,54.57,0

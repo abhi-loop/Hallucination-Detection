@@ -1,7 +1,7 @@
 """
 evaluate_tqa.py
 
-Evaluates all metrics in data/tqaresults.csv individually via AUROC and
+Evaluates all metrics in data/tfulresults.csv individually via AUROC and
 best-threshold G-mean, then reports a combined summary table.
 
 Usage (from project root):
@@ -17,7 +17,7 @@ from metrics.threshold import find_best_threshold
 from metrics.evaluation import compute_auroc
 
 # ── Load results ──────────────────────────────────────────────────────────────
-df = pd.read_csv("data/tqaresults.csv").dropna(subset=["label"])
+df = pd.read_csv("data/tfulresults.csv").dropna(subset=["label"])
 df["label"] = df["label"].astype(int)
 
 print(f"Loaded {len(df)} rows  |  Factual: {(df['label']==0).sum()}  |  Hallucination: {(df['label']==1).sum()}\n")
