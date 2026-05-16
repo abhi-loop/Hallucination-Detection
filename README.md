@@ -290,18 +290,7 @@ The frontend (`src/lib/api.ts`) picks the backend URL in this priority order:
 
 1. `localStorage` key `backendUrl` — set via the "Backend URL" field in the UI header
 2. `VITE_API_URL` env variable — baked in at Vercel build time
-3. Hardcoded fallback `http://localhost:8000`& source env/bin/activate
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-pip install -r requirements.txt
-
-# (Optional) generate calibration data
-python pipeline/run_dataset.py --limit 100
-
-# Start server (bind to all interfaces for remote access)
-uvicorn api.server:app --host 0.0.0.0 --port 8000
-```
-
-Expose port 8000 via your firewall / reverse proxy (nginx recommended for production).
+3. Hardcoded fallback `http://localhost:8000`
 
 ---
 
