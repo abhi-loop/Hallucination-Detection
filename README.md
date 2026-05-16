@@ -210,6 +210,8 @@ Returns server and model status.
 | `k` | int | 10 | Number of sampled responses (1–20) |
 | `use_clipping` | bool | true | Apply Feature Clipping to embeddings |
 
+---
+
 ## ☁️ Deployment
 
 The frontend is deployed as a static site on **Vercel**. The GPU backend runs on **Google Colab** (T4 GPU) and is exposed to the internet via an **ngrok HTTPS tunnel**, which the Vercel frontend calls directly.
