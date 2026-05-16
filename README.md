@@ -142,10 +142,10 @@ cd ..
 ### Step 1 — Generate calibration data *(first time only)*
 
 ```bash
-python pipeline/run_dataset.py --limit 100
+python pipeline/run_dataset.py --limit 817
 ```
 
-Runs the EigenScore pipeline over 100 TruthfulQA questions and saves results to `data/tfulresults.csv`. Takes **~1–2 hours** depending on GPU.
+Runs the EigenScore pipeline over 817 TruthfulQA questions and saves results to `data/tfulresults.csv`. Takes **~3-4 hours** depending on GPU.
 
 ### Step 2 — Start the backend API server
 
@@ -177,16 +177,6 @@ Type any question in the chat panel and press **Send**. After ~30–60 seconds:
 | **Embedding Scatter** | PCA of the 10 live response embeddings (PC1 vs PC2) |
 | **Generated Responses** | Expandable list of all K = 10 raw model answers |
 | **FC toggle** (header) | Enable/disable Feature Clipping on embeddings (default: ON) |
-
----
-
-## 🖥️ CLI Usage (no frontend)
-
-```bash
-python main.py
-```
-
-Runs a single hardcoded question and prints eigenscore, threshold, and verdict to the terminal.
 
 ---
 
@@ -321,23 +311,6 @@ If **any one** response passes either check → labelled **Factual (0)**; otherw
 ### Feature Clipping
 
 FC maintains an online memory bank of embeddings across queries. At test time it clips each dimension to the [p, 1−p] percentile range observed in the bank (default p = 0.2). This removes outlier dimensions that inflate the covariance matrix and sharpen the factual / hallucinated cluster separation.
-
----
-
-## 🛠️ Troubleshooting
-
-| Issue | Fix |
-|-------|-----|
-| `No module named uvicorn` | Use `env\scripts\uvicorn` directly (not `python -m uvicorn`) |
-| `PackageNotFoundError: bitsandbytes` | Activate venv first: `env\Scripts\activate` |
-| `bitsandbytes` errors on Windows | Use `pip install bitsandbytes-windows` or WSL2 |
-| Page goes blank after question | Backend crashed mid-inference; restart without `--reload` |
-| `Cannot reach backend` | Ensure FastAPI is on port 8000 and model has finished loading |
-| CUDA out of memory | Close other GPU processes; check `nvidia-smi` |
-| Model download fails | Set `HF_TOKEN` env var or download manually from HuggingFace |
-| ngrok tunnel expired | Re-run Step 6 in the Colab notebook; update the URL in the UI |
-| Colab session disconnects | Re-run from Step 2B (project on Drive, no re-upload needed) |
-| `tfulresults.csv` not found | Run `python pipeline/run_dataset.py --limit 100` first |
 
 ---
 
