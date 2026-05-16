@@ -1,11 +1,11 @@
-import { useState, useCallback, useId } from 'react';
-import { Activity, WifiOff } from 'lucide-react';
+import { useState, useCallback, useId, useRef } from 'react';
+import { Activity, WifiOff, Link, Check } from 'lucide-react';
+import { analyzeQuestion, getBackendUrl, setBackendUrl } from '@/lib/api';
 import ChatPanel from '@/components/ChatPanel';
 import HallucinationVerdict from '@/components/HallucinationVerdict';
 import EmbeddingScatter from '@/components/EmbeddingScatter';
 import EigenScoreHistogram from '@/components/EigenScoreHistogram';
 import ResponsesPanel from '@/components/ResponsesPanel';
-import { analyzeQuestion } from '@/lib/api';
 import type { ChatMessage, AnalysisResult } from '@/lib/mockData';
 
 const Index = () => {
@@ -15,7 +15,18 @@ const Index = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [useClipping, setUseClipping] = useState(true);
+  const [urlInput, setUrlInput] = useState(() => getBackendUrl());
+  const [savedFlash, setSavedFlash] = useState(false);
   const clippingToggleId = useId();
+  const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleSaveUrl = useCallback((val: string) => {
+    setBackendUrl(val);
+    setUrlInput(getBackendUrl()); // normalise (strips trailing /)
+    setSavedFlash(true);
+    if (saveTimer.current) clearTimeout(saveTimer.current);
+    saveTimer.current = setTimeout(() => setSavedFlash(false), 1500);
+  }, []);
 
   const handleSend = useCallback(async (content: string) => {
     const userMsg: ChatMessage = {
@@ -60,7 +71,7 @@ const Index = () => {
     } finally {
       setIsAnalyzing(false);
     }
-  }, []);
+  }, [useClipping]);
 
   const handleClear = useCallback(() => {
     setMessages([]);
@@ -104,6 +115,25 @@ const Index = () => {
               }`}
             />
           </button>
+        </div>
+
+        {/* Backend URL input */}
+        <div className="flex items-center gap-1.5 ml-3">
+          <Link className="w-3 h-3 text-muted-foreground shrink-0" />
+          <input
+            id="backend-url-input"
+            type="url"
+            value={urlInput}
+            onChange={(e) => setUrlInput(e.target.value)}
+            onBlur={(e) => handleSaveUrl(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') { e.currentTarget.blur(); handleSaveUrl(urlInput); } }}
+            placeholder="https://xxxx.ngrok-free.app"
+            aria-label="Backend URL"
+            className="h-6 w-56 rounded border border-border bg-muted/40 px-2 text-[10px] font-mono text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-ring transition-colors"
+          />
+          {savedFlash && (
+            <Check className="w-3 h-3 text-green-500 shrink-0 animate-pulse" />
+          )}
         </div>
 
         <span className="text-[10px] font-mono text-muted-foreground">

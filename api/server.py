@@ -81,7 +81,12 @@ app = FastAPI(title="Hallucination Sentinel API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # allows ngrok / Colab tunnel URLs in addition to localhost
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:8080",
+        "http://127.0.0.1:8080",
+    ],
     allow_methods=["POST", "GET", "OPTIONS"],
     allow_headers=["*"],
 )
